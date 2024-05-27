@@ -2,8 +2,8 @@
 * text=auto
 
 # Specific file types
-*.sh eol=lf          # Use LF for shell scripts
-*.bat eol=crlf       # Use CRLF for batch scripts
+*.sh eol=lf
+*.bat eol=crlf
 
 # Treat image files as binary
 *.jpg binary
