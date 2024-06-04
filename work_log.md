@@ -18,7 +18,7 @@ WEEK 2
 
 WEEK 3
 - Attended GSoC FAQ session on 23 May, 2024
-- Presented the plan and approach for the summer in weekly sync up and got feedback on the way forward ([slide](!slides/ML4Sci-QuantumContrastiveLearning.pdf))
+- Presented the plan and approach for the summer in weekly sync up and got feedback on the way forward ([slide](https://github.com/SanyaNanda/ML4Sci_QuantumContrastiveLearning/blob/main/slides/ML4Sci-QuantumContrastiveLearning.pdf))
 
 </hr>
 
@@ -27,4 +27,11 @@ CODING
 WEEK 1: 27 May - 3 June
 - Repository set up
 - Data loading and visualization of electron-photon dataset
-- Experiment 1: Classical Base Model using CNN layers along with contrastive pair loss on MNIST dataset 
+- Experiment 1: Classical Base Model using CNN layers along with contrastive pair loss on MNIST dataset
+- Exploring different ways to integrate quantum layer in the base model to make it hybrid
+- Sync up: actively listened to other contributor's presentation to get a better understanding of their projects
+
+
+WEEK 2: 3 June - 10 June
+
+- Working on Experiment 2: Hybrid Base Model using CNN layers along with contrastive pair loss on MNIST dataset
