@@ -1,0 +1,90 @@
+wandb_version: 1
+
+input_shape:
+  desc: null
+  value:
+  - 8
+  - 8
+  - 1
+layer_1:
+  desc: null
+  value: 32
+kernel_1:
+  desc: null
+  value:
+  - 3
+  - 3
+activation_1:
+  desc: null
+  value: relu
+mp_kernel:
+  desc: null
+  value:
+  - 2
+  - 2
+layer_2:
+  desc: null
+  value: 64
+activation_2:
+  desc: null
+  value: leaky_relu
+regularizer:
+  desc: null
+  value: l2 0.01
+optimizer:
+  desc: null
+  value: adam
+loss:
+  desc: null
+  value: contrastive_pair_loss
+dropout:
+  desc: null
+  value: 0.5
+epoch:
+  desc: null
+  value: 50
+batch_size:
+  desc: null
+  value: 50000
+architecture:
+  desc: null
+  value: Base CNN
+dataset:
+  desc: null
+  value: electron-photon
+clipnorm:
+  desc: null
+  value: false
+_wandb:
+  desc: null
+  value:
+    python_version: 3.10.11
+    cli_version: 0.17.0
+    framework: keras
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1718131781
+    t:
+      1:
+      - 2
+      - 3
+      - 5
+      - 53
+      - 55
+      2:
+      - 2
+      - 3
+      - 5
+      - 53
+      - 55
+      3:
+      - 2
+      - 16
+      - 23
+      4: 3.10.11
+      5: 0.17.0
+      8:
+      - 1
+      - 3
+      - 5
+      13: windows-amd64

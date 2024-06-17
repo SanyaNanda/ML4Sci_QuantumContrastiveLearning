@@ -1,0 +1,44 @@
+{
+    "os": "Windows-10-10.0.22621-SP0",
+    "python": "3.10.11",
+    "heartbeatAt": "2024-06-11T18:21:59.724484",
+    "startedAt": "2024-06-11T18:21:51.890279",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "codePathLocal": null,
+    "git": {
+        "remote": "https://github.com/SanyaNanda/ML4Sci_QuantumContrastiveLearning.git",
+        "commit": "3ee5fe860e31f26b6947f0f54123401ca8fd38aa"
+    },
+    "email": "sanya.nanda@gmail.com",
+    "root": "C:/Users/Sanya Nanda/Sanya-Home/gsoc2024/ML4Sci_QuantumContrastiveLearning",
+    "host": "DESKTOP-KN9IR51",
+    "username": "Sanya Nanda",
+    "executable": "C:\\Users\\Sanya Nanda\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+    "cpu_count": 10,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 1000.0,
+        "min": 0.0,
+        "max": 1000.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 1000.0,
+            "min": 0.0,
+            "max": 1000.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 476.04784774780273,
+            "used": 134.05430221557617
+        }
+    },
+    "memory": {
+        "total": 15.700675964355469
+    }
+}

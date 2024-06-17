@@ -35,3 +35,12 @@ WEEK 1: 27 May - 3 June
 WEEK 2: 3 June - 10 June
 
 - Working on Experiment 2: Hybrid Base Model using CNN layers along with contrastive pair loss on MNIST dataset
+- Hybrid model uses a qunatum cicruit as keras quantum layer in the base cnn model
+- Both classical an dhybrid base model perform well on mnist dataset
+
+WEEK 3: 10 June - 17 June
+- Ran both the classical and hybrid model on electron photon data
+- The models didn't perform well on validation dataset, with validation loss not coming below 0.5 which means the model guess on new data
+- Reviewed more research papers on a new angle and documented the learnings
+
+WEEK 4: 17 June - 24 June
