@@ -2,7 +2,8 @@
 data/
 saved_models/
 notebooks/hybrid_cnn_base_1/
-notebooks/Experiment1/wandb
+notebooks/Experiment_electron_photon/wandb
+*saved_models/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
