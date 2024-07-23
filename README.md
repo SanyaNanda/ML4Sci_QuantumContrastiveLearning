@@ -6,21 +6,30 @@
 ![ML4Sci@GSoC2024](https://miro.medium.com/v2/resize:fit:1100/format:webp/0*8KAp7eW2atsaRwdS.jpeg)
 
 #### Here some documentation of the project to follow: 
-[Proposal](slides/sanya-ml4sci-proposal.pdf), [Plan](slides/ML4Sci-QuantumContrastiveLearning.pdf), [Test Tasks](https://github.com/SanyaNanda/ML4Sci-QMLHEP-2024)
+- [Proposal](slides/sanya-ml4sci-proposal.pdf)
+- [Test Tasks](https://github.com/SanyaNanda/ML4Sci-QMLHEP-2024)
+- [Plan](slides/ML4Sci-QuantumContrastiveLearning.pdf)
+- [ML4Sci Project Description](https://ml4sci.org/gsoc/2024/proposal_QMLHEP3.html)
+- [GSoC Abstract](https://summerofcode.withgoogle.com/programs/2024/projects/IDScJm9Z)
 
 #### Mid-Term Evaluation:
 - [Presentation](slides/ML4Sci-MidTerm.pdf)
 - [Blog](https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141)
 
 #### Jupyter Notebooks
-A comprehensive (chronological) order to view the notebooks
-- [Data Visualisation]()
-- [Classical Base Model on MNIST]()
-- [Hybrid Base Model on MNIST]()
-- [Experimentation on electron-photon dataset]()
-- [Experimentation on quark-gluon dataset]()
+A comprehensive order to go through the jupyter notebooks
+- [Data Visualisation](notebooks/Experiment_MNIST_0_1/1_data_loading_visualization.ipynb)
+- [Classical Base Model on MNIST](notebooks/Experiment_MNIST_0_1/2_classical_base_model_mnist.ipynb)
+- [Hybrid Base Model on MNIST](notebooks/Experiment_MNIST_0_1/3_hybrid_base_model_mnist.ipynb)
+- [Experimentation on electron-photon dataset](notebooks/Experiment_electron_photon)
+- [Experimentation on quark-gluon dataset](notebooks/Experiment_quark_gluon)
  
 #### Code Structure
+- src
+-- data preprocessing
+-- pair creation
+-- helpers
+-- qcl
 
 
 #### References
