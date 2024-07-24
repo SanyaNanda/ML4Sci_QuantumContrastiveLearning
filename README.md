@@ -50,7 +50,7 @@ A comprehensive order to go through the jupyter notebooks
   - `run_evaluation.py`: Script to run the evaluation process.
 
 - `tests/`: Directory for test scripts.
-- `notebooks/`: Directory for Jupyter notebooks. [Comprehensive Guide to navigate notebooks](#### Jupyter Notebooks)
+- `notebooks/`: Directory for Jupyter notebooks. [Comprehensive Guide to navigate notebooks](#Jupyter-Notebooks)
 - `slides/`: Directory for presentation slides.
 - `requirements.txt`: File listing the dependencies.
 - `setup.py`: Setup script for the package.
