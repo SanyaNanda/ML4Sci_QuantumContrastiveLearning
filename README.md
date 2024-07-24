@@ -24,47 +24,39 @@ A comprehensive order to go through the jupyter notebooks
 - [Experimentation on electron-photon dataset](notebooks/Experiment_electron_photon)
 - [Experimentation on quark-gluon dataset](notebooks/Experiment_quark_gluon)
  
-#### Code Structure
+#### Description of Directories and files
 
-Repository/
-│
-├── qssl/
-│   ├── __init__.py
-│   ├── data/
-│   │   ├── __init__.py
-│   │   ├── data_loader.py
-│   │   ├── data_pair_creation.py
-│   │   ├── data_preprocessing_augmentation.py
-│   ├── loss/
-│   │   ├── __init__.py
-│   │   ├── contrastive_pair_loss.py
-│   │   ├── info_nce.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── qcl.py
-│   ├── training/
-│   │   ├── __init__.py
-│   │   ├── train.py
-│   ├── evaluation/
-│   │   ├── __init__.py
-│   │   ├── evaluate.py
-│   ├── utils/
-│   │   ├── __init__.py
-│   │   ├── helpers.py
-│   └── config.py
-│
-├── scripts/
-│   ├── run_training.py
-│   ├── run_evaluation.py
-│
-├── tests/
-├── notebooks/
-├── slides/
-├── requirements.txt
-├── setup.py
-├── README.md
-├── LICENCE
-└── .gitignore
+- `qssl/`: Main package directory.
+  - `__init__.py`: Makes `qssl` a Python package.
+  - `data/`: Directory for data-related scripts.
+    - `data_loader.py`: Script for loading data.
+    - `data_pair_creation.py`: Script for creating data pairs.
+    - `data_preprocessing_augmentation.py`: Script for data preprocessing and augmentation.
+  - `loss/`: Directory for loss function scripts.
+    - `contrastive_pair_loss.py`: Script for contrastive pair loss function.
+    - `info_nce.py`: Script for InfoNCE loss function.
+  - `models/`: Directory for model definitions.
+    - `qcl.py`: Script defining the quantum contrastive learning model.
+  - `training/`: Directory for training scripts.
+    - `train.py`: Script for training the model.
+  - `evaluation/`: Directory for evaluation scripts.
+    - `evaluate.py`: Script for evaluating the model.
+  - `utils/`: Directory for utility scripts.
+    - `helpers.py`: Helper functions.
+  - `config.py`: Configuration file for the project.
+
+- `scripts/`: Directory for scripts to run training and evaluation.
+  - `run_training.py`: Script to run the training process.
+  - `run_evaluation.py`: Script to run the evaluation process.
+
+- `tests/`: Directory for test scripts.
+- `notebooks/`: Directory for Jupyter notebooks. [Comprehensive Guide to navigate notebooks](#### Jupyter Notebooks)
+- `slides/`: Directory for presentation slides.
+- `requirements.txt`: File listing the dependencies.
+- `setup.py`: Setup script for the package.
+- `README.md`: This file.
+- `LICENSE`: License for the project.
+- `.gitignore`: Git ignore file.
 
 
 #### How to Run
@@ -72,6 +64,8 @@ Repository/
 - Pip install the libraries mentioned in requirements.txt
 - Try out the jupyter notebooks
 - To train the QCL model on quark-gluon dataset run "python scripts/run_training.py"
+
+  
 ![run_training](assests/run_script.png)
 
 
