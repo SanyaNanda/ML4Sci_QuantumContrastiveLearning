@@ -1,11 +1,11 @@
 # Quantum Contrastive Learning<br>for High-Energy Physics Analysis at the LHC
 ## Learning quantum representations of classical high energy physics data with contrastive learning
 
-</hr>
-
 ![ML4Sci@GSoC2024](https://miro.medium.com/v2/resize:fit:1100/format:webp/0*8KAp7eW2atsaRwdS.jpeg)
 
-#### Here some documentation of the project to follow: 
+</hr>
+
+#### Project Documentation: 
 - [Proposal](slides/sanya-ml4sci-proposal.pdf)
 - [Test Tasks](https://github.com/SanyaNanda/ML4Sci-QMLHEP-2024)
 - [Plan](slides/ML4Sci-QuantumContrastiveLearning.pdf)
@@ -13,7 +13,7 @@
 - [GSoC Abstract](https://summerofcode.withgoogle.com/programs/2024/projects/IDScJm9Z)
 
 #### Mid-Term Evaluation:
-- [Presentation](slides/ML4Sci-MidTerm.pdf)
+- [Lightning Talk Presentation](slides/ML4Sci-MidTerm.pdf)
 - [Blog](https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141)
 
 #### Jupyter Notebooks
@@ -25,12 +25,57 @@ A comprehensive order to go through the jupyter notebooks
 - [Experimentation on quark-gluon dataset](notebooks/Experiment_quark_gluon)
  
 #### Code Structure
-- src
--- data preprocessing
--- pair creation
--- helpers
--- qcl
 
+Repository/
+│
+├── qssl/
+│   ├── __init__.py
+│   ├── data/
+│   │   ├── __init__.py
+│   │   ├── data_loader.py
+│   │   ├── data_pair_creation.py
+│   │   ├── data_preprocessing_augmentation.py
+│   ├── loss/
+│   │   ├── __init__.py
+│   │   ├── contrastive_pair_loss.py
+│   │   ├── info_nce.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── qcl.py
+│   ├── training/
+│   │   ├── __init__.py
+│   │   ├── train.py
+│   ├── evaluation/
+│   │   ├── __init__.py
+│   │   ├── evaluate.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── helpers.py
+│   └── config.py
+│
+├── scripts/
+│   ├── run_training.py
+│   ├── run_evaluation.py
+│
+├── tests/
+├── notebooks/
+├── slides/
+├── requirements.txt
+├── setup.py
+├── README.md
+├── LICENCE
+└── .gitignore
+
+
+#### How to Run
+- Create a virtualenv
+- Pip install the libraries mentioned in requirements.txt
+- Try out the jupyter notebooks
+- To train the QCL model on quark-gluon dataset run "python scripts/run_training.py"
+![run_training](assests/run_script.png)
+
+
+To understand the project in depth refer the [mid-term evaluation blog](https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141) and summarised results can be found in this [presentation](slides/ML4Sci-MidTerm.pdf).
 
 #### References
 
@@ -54,5 +99,3 @@ https://doi.org/10.1016/j.nima.2020.164304.
 [9] Wang, T. and Isola, P., 2020, November. Understanding contrastive representation learning through alignment and uniformity on the hypersphere. In International conference on machine learning (pp. 9929–9939). PMLR.
 
 [10] Liu, Y., Jin, M., Pan, S., Zhou, C., Zheng, Y., Xia, F. and Philip, S.Y., 2022. Graph self-supervised learning: A survey. IEEE transactions on knowledge and data engineering, 35(6), pp.5879–5900.
-
-  

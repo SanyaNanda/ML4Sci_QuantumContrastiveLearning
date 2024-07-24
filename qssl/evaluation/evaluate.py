@@ -85,3 +85,7 @@ def plot_auc(y_true, y_pred):
     plt.title('Receiver Operating Characteristic')
     plt.legend(loc='lower right')
     plt.show()
+
+class Evaluate:
+    
+    
