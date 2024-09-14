@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        
+        /* Sidebar styling */
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            padding-top: 20px;
+            height: 100%;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Main content styling */
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+
+        .content h1, h2, h3 {
+            color: #333;
+        }
+
+        /* Text justification */
+        .content p {
+            text-align: justify;
+        }
+
+        /* Responsive design */
+        @media screen and (max-width: 600px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#introduction">Introduction</a>
+        <a href="#installation">Installation</a>
+        <a href="#usage">Usage</a>
+        <a href="#api">API Reference</a>
+        <a href="#contributing">Contributing</a>
+        <a href="#license">License</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+        <p>Welcome to the technical documentation of the repository. This documentation will guide you through the setup, usage, and contribution process.</p>
+
+        <h2 id="installation">Installation</h2>
+        <p>To install the project, clone the repository and follow the steps below.</p>
+        <pre><code>git clone https://github.com/username/repository.git
+cd repository
+npm install
+</code></pre>
+
+        <h2 id="usage">Usage</h2>
+        <p>Once installed, you can run the project using the following command:</p>
+        <pre><code>npm start</code></pre>
+
+        <h2 id="api">API Reference</h2>
+        <p>This project provides the following API endpoints:</p>
+        <ul>
+            <li>GET /api/v1/resource</li>
+            <li>POST /api/v1/resource</li>
+        </ul>
+
+        <h2 id="contributing">Contributing</h2>
+        <p>If you'd like to contribute, please open an issue or submit a pull request.</p>
+
+        <h2 id="license">License</h2>
+        <p>This project is licensed under the MIT License. See the LICENSE file for more details.</p>
+    </div>
+
+</body>
+</html>
