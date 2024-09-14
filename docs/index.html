@@ -3,55 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Documentation</title>
+    <title>GSoC 2024: Sanya Nanda</title>
+
+    <!-- Link to Google Sans from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Google Sans', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
+            line-height: 1.6; /* Improve line spacing for readability */
         }
-        
+
         /* Sidebar styling */
         .sidebar {
             width: 250px;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #333;
-            padding-top: 20px;
             height: 100%;
+            padding-top: 20px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #ddd;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for professionalism */
+        }
+
+        .sidebar h2 {
+            margin-left: 20px;
+            font-size: 18px;
         }
 
         .sidebar a {
-            padding: 10px 15px;
+            padding: 10px 20px;
             text-decoration: none;
-            font-size: 18px;
-            color: white;
+            font-size: 16px;
+            color: #333;
             display: block;
+            transition: background-color 0.3s ease; /* Smooth hover effect */
         }
 
         .sidebar a:hover {
-            background-color: #575757;
+            background-color: #42daf5;
+            color: white;
+            text-decoration: None;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar ul li ul {
+            margin-left: 15px;
         }
 
         /* Main content styling */
         .content {
-            margin-left: 260px;
-            padding: 20px;
+            margin-left: 270px;
+            padding: 30px; /* Added padding for better layout */
+            max-width: 900px; /* Limit the content width for better readability */
         }
 
         .content h1, h2, h3 {
             color: #333;
+            margin-top: 30px; /* Spacing above headings */
+            margin-bottom: 15px; /* Spacing below headings */
         }
 
-        /* Text justification */
         .content p {
             text-align: justify;
+            margin-bottom: 20px; /* Space between paragraphs */
+        }
+
+        .content img {
+            max-width: 100%; /* Ensure images fit within the content area */
+            height: auto;
+            margin: 20px 0; /* Space around the images */
+            display: block; /* Block-level element for images */
+        }
+
+        /* Author Info */
+        .author-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .author-info img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .author-info span {
+            color: #555;
+        }
+
+        /* Link Styling */
+        a {
+            color: #42daf5; /* Light blue link color for content */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #42daf5; /* Darker blue on hover */
         }
 
         /* Responsive design */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 768px) {
             .sidebar {
                 width: 100%;
                 height: auto;
@@ -60,6 +128,7 @@
 
             .content {
                 margin-left: 0;
+                padding: 15px;
             }
         }
     </style>
@@ -68,42 +137,93 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="#introduction">Introduction</a>
-        <a href="#installation">Installation</a>
-        <a href="#usage">Usage</a>
-        <a href="#api">API Reference</a>
-        <a href="#contributing">Contributing</a>
-        <a href="#license">License</a>
+        <h2>Index</h2>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#acknowledgement">Acknowledgement</a></li>
+        </ul>
     </div>
 
     <!-- Main content -->
     <div class="content">
-        <h1 id="introduction">Introduction</h1>
-        <p>Welcome to the technical documentation of the repository. This documentation will guide you through the setup, usage, and contribution process.</p>
+        <h1 id="introduction">GSoC 2024 | Learning Quantum Representations of Classical High-Energy Physics Data with Contrastive Learning</h1>
 
-        <h2 id="installation">Installation</h2>
-        <p>To install the project, clone the repository and follow the steps below.</p>
-        <pre><code>git clone https://github.com/username/repository.git
-cd repository
-npm install
-</code></pre>
+        <!-- Author Info -->
+        <div class="author-info">
+            <span>Sanya Nanda | Sept 22, 2024 | 14 min read</span>
+        </div>
 
-        <h2 id="usage">Usage</h2>
-        <p>Once installed, you can run the project using the following command:</p>
-        <pre><code>npm start</code></pre>
+        <h2>Google Summer of Code @ ML4Sci</h2>
+        <p>This year Google celebrates its 20th anniversary of <a href="https://g.co/gsoc">Google Summer of Code (GSoC)</a> with 1,220 Contributors, writing code for 195 open-source mentoring organizations starting May 27, 2024. 
+        As part of GSoC 2024, I contributed to <a href="https://ml4sci.org/">Machine Learning for Science (ML4Sci)</a>. It is an open-source organization that brings together modern machine learning techniques and applies them to cutting-edge problems in Science, Technology, Engineering, and Math (STEM). 
+        I worked in QMLHEP, where we implement Quantum Machine Learning on High-Energy Physics datasets.</p>
 
-        <h2 id="api">API Reference</h2>
-        <p>This project provides the following API endpoints:</p>
-        <ul>
-            <li>GET /api/v1/resource</li>
-            <li>POST /api/v1/resource</li>
-        </ul>
+        <h3>Project</h3>
+        Learning quantum representations of classical high-energy physics data with contrastive learning:
+        <li>Implemented a trainable embedding function to encode classical data onto a quantum model with contrastive learning.</li>
+        <li>Developed and experimented with different ideas for embedding functions and contrastive losses for training.</li>
+        <li>Benchmarked the trained embedding against a standard encoding on a given QML model </li>
 
-        <h2 id="contributing">Contributing</h2>
-        <p>If you'd like to contribute, please open an issue or submit a pull request.</p>
+        <h2 id="background">Background</h2>
+        <h3>LHC: Large Hadron Collider</h3>
+        <p>At LHC, scientists are looking into the unknown and trying to answer the most fundamental questions about our Universe, the likes of: 
+        <em>"What is the Universe really made of and what forces act within it?" and "What gives everything substance?"</em>
+        The Large Hadron Collider (LHC) is the world's largest and most powerful particle physics accelerator, located at CERN in Geneva, 
+        Switzerland. It features a 27-kilometer ring of superconducting magnets, designed to accelerate particles to speed of light and 
+        collide them to explore fundamental physics. The LHC operates at extremely low temperatures, even colder than outer space, 
+        to maintain its superconducting state. The collider has been instrumental in significant discoveries, including the Higgs boson. 
+        In total, the LHC is comprised of seven separate experiments: ALICE, LHCb, <b>CMS</b>, TOTEM, LHCf, MoEDAL, and ATLAS.
+        </p>
 
-        <h2 id="license">License</h2>
-        <p>This project is licensed under the MIT License. See the LICENSE file for more details.</p>
+        <figure>
+        <img src="lhc.jpg" alt="LHC Image">
+        <figcaption><a href="https://people.ece.uw.edu/hauck/LargeHadronCollider/">Reference</a></figcaption>
+        </figure>
+
+        <h3>CMS: Compact Muon Solenoid</h3>
+        <p>The Compact Muon Solenoid (CMS) is one of the two large general-purpose detectors located at CERN's Large Hadron Collider (LHC). It is designed to investigate a broad range of physics, from studying the Higgs boson to searching for new particles that could explain the mysteries of dark matter and other unknown phenomena.
+            
+            The CMS detector is massive, weighing around 14K tonnes. It is structured like a cylindrical onion, with multiple layers of detectors. These layers allow CMS to capture detailed "3D photographs" of the particle collisions occurring at the LHC, which happen at almost the speed of light. The detector uses a powerful solenoid magnet to bend the paths of charged particles, helping to determine their momentum and charge. CMS is highly sensitive, equipped to detect various particles. 
+            
+            CMS also measures the properties of well-known particles with unprecedented precision and be on the lookout for completely new, unpredicted phenomena. Such research not only increases our understanding but may eventually spark new technologies that change the world we live in.</p>
+        
+            <figure>
+                <img src="cms.png" alt="LHC Image">
+                <figcaption>https://cms.cern/detector</figcaption>
+                </figure>
+        
+        <ol>
+        <li><b>Bending Particles</b></li>
+        <p> A powerful magnet is needed to bend charged particles as they fly outwards from the collision point. Bending the trajectories of the particles serves two purposes:
+        <ol>
+        <li><b>Identify the charge of the particle:</b> positively and negatively charged particles bend in opposite directions in the same magnetic field.</li>
+        <li><b>Measure the momentum of the particle:</b> in an identical magnetic field, high-momentum particles bend less compared with low-momentum ones.</li></p>
+        </ol>
+        <li><b>Identifying Tracks</b></li>
+        <p>Merely bending particles is not enough -- CMS must identify the paths taken by these bent charged particles with a very high precision. This is done by a silicon Tracker made of around 75 million individual electronic sensors arranged in concentric layers. When a charged particle flies through the Tracker layer, it interacts electromagnetically with the silicon and produces a hit -- these individual hits can then be joined together to identify the track of the traversing particle.
+        </p>
+        <li><b>Measuring Energy: ECAL and HCAL</b></li>
+        <p>Information about the energies of the various particles produced in each collision is crucial to understanding what occurred at the collision point. This information is collected from two kinds of “calorimeters” in CMS. The Electromagnetic Calorimeter (ECAL) is the inner layer of the two and measures the energy of electrons and photons by stopping them completely. Hadrons, which are composite particles made up of quarks and gluons, fly through the ECAL and are stopped by the outer layer called the Hadron Calorimeter (HCAL).
+        </p>
+    </ol>
+                
+
+        <h2 id="acknowledgement">Acknowledgment</h2>
+        <p>I would love to start by acknowledging all the unwavering support showered throughout the program by my mentors and co-mentees. I want to extend my deepest gratitude to my mentors and Professors 
+            <a href="http://sergeigleyzer.com/">Sergei Gleyzer</a>, <a href="https://physics.ku.edu/people/kong-kyoungchul">KC Kong</a>, <a href="https://www.phys.ufl.edu/wp/index.php/people/faculty/konstantin-matchev/">Katia Matcheva</a>, <a href="https://www.phys.ufl.edu/wp/index.php/people/faculty/katia-matcheva/">Konstantin Matchev</a>, <a href="https://inspirehep.net/authors/1023777">Myeonghun Park</a>, and <a href="https://www.linkedin.com/in/gopald27/">Gopal Ramesh Dahale</a>; who have guided me with invaluable insights. 
+            Their constant encouragement has been a source of inspiration and motivation for me. 
+            I am truly grateful for the time and effort they have invested in nurturing my skills and broadening my horizons.</p>
+
+        <p>To my co-mentees, <a href="https://www.linkedin.com/in/amey-bhatuse-873189227/"> Amey Bhatuse</a> and <a href="https://github.com/duyd">Duy Do Lee</a>, I deeply appreciate the camaraderie, shared learning, and mutual support we've offered each other. 
+            Together, we have navigated challenges, celebrated successes, and grown stronger.
+            To all the other ML4Sci GSoC contributors and their amazing work! 
+            It was always a delight to get on a call with everyone and listen and learn from everyone's experiences. 
+            For me, the best part was being part of such a dedicated community working towards quantum computing. 
+            The global perspective of the team helped me understand different points of view and approaches to solve the problem at hand.</p>
+
+        <h2 id="references">References</h2>
+        <p>1. <a href="https://summerofcode.withgoogle.com/">Google Summer of Code (GSoC) 2024 Documentation</a>.<br>2. Quantum Generative Adversarial Networks by XYZ.<br>3. Monte Carlo Simulation Guide by ABC.</p>
     </div>
 
 </body>
