@@ -141,6 +141,7 @@
         <ul>
             <li><a href="#introduction">Introduction</a></li>
             <li><a href="#background">Background</a></li>
+            <li><a href="#data">Data</a></li>
             <li><a href="#acknowledgement">Acknowledgement</a></li>
         </ul>
     </div>
@@ -177,7 +178,7 @@
         </p>
 
         <figure>
-        <img src="lhc.jpg" alt="LHC Image">
+        <img src="assets/lhc.jpg" alt="LHC Image">
         <figcaption><a href="https://people.ece.uw.edu/hauck/LargeHadronCollider/">Reference</a></figcaption>
         </figure>
 
@@ -189,24 +190,39 @@
             CMS also measures the properties of well-known particles with unprecedented precision and be on the lookout for completely new, unpredicted phenomena. Such research not only increases our understanding but may eventually spark new technologies that change the world we live in.</p>
         
             <figure>
-                <img src="cms.png" alt="LHC Image">
+                <img src="assets/cms.png" alt="LHC Image">
                 <figcaption>https://cms.cern/detector</figcaption>
                 </figure>
         
         <ol>
         <li><b>Bending Particles</b></li>
         <p> A powerful magnet is needed to bend charged particles as they fly outwards from the collision point. Bending the trajectories of the particles serves two purposes:
-        <ol>
+        <ul>
         <li><b>Identify the charge of the particle:</b> positively and negatively charged particles bend in opposite directions in the same magnetic field.</li>
         <li><b>Measure the momentum of the particle:</b> in an identical magnetic field, high-momentum particles bend less compared with low-momentum ones.</li></p>
-        </ol>
+        </ul>
         <li><b>Identifying Tracks</b></li>
-        <p>Merely bending particles is not enough -- CMS must identify the paths taken by these bent charged particles with a very high precision. This is done by a silicon Tracker made of around 75 million individual electronic sensors arranged in concentric layers. When a charged particle flies through the Tracker layer, it interacts electromagnetically with the silicon and produces a hit -- these individual hits can then be joined together to identify the track of the traversing particle.
+        <p>The paths taken by these bent charged particles must be calculated with a very high precision. 
+            This is done by a silicon Tracker made of around 75 million individual electronic sensors arranged in concentric layers. 
+            When a charged particle flies through the Tracker layer, it interacts electromagnetically with the silicon and produces
+             a hit. These individual hits can then be joined together to identify the track of the traversing particle.
         </p>
         <li><b>Measuring Energy: ECAL and HCAL</b></li>
-        <p>Information about the energies of the various particles produced in each collision is crucial to understanding what occurred at the collision point. This information is collected from two kinds of “calorimeters” in CMS. The Electromagnetic Calorimeter (ECAL) is the inner layer of the two and measures the energy of electrons and photons by stopping them completely. Hadrons, which are composite particles made up of quarks and gluons, fly through the ECAL and are stopped by the outer layer called the Hadron Calorimeter (HCAL).
+        <p>Information about the energies of the various particles produced in each collision is crucial to understanding what occurred at the collision point. 
+            This information is collected from the two types of calorimeters in CMS as marked in figure 2. 
+            The Electromagnetic Calorimeter (ECAL) is the inner layer of the two and measures the energy of electrons and photons by stopping them completely. 
+            Hadrons, which are composite particles made up of quarks and gluons, fly through the ECAL and are stopped by the outer layer called the Hadron Calorimeter (HCAL).
         </p>
     </ol>
+
+    <h2 id="data">Data</h2>
+    <p>The most important data used in this project is quark gluon jets for discrimnationg them from each other.
+    The goal is to discriminate between quark-initiated and gluon-initiated jets. 
+    The dataset consists of 933206 images with 3-channel and 125x125 shape, 
+    half of them representing quarks and the other half gluons. 
+    The three channels in the images correspond to specific component of the CMS detector of the LHC described above Tracks, ECAL and HCAL.</p>
+
+
                 
 
         <h2 id="acknowledgement">Acknowledgment</h2>
@@ -224,6 +240,29 @@
 
         <h2 id="references">References</h2>
         <p>1. <a href="https://summerofcode.withgoogle.com/">Google Summer of Code (GSoC) 2024 Documentation</a>.<br>2. Quantum Generative Adversarial Networks by XYZ.<br>3. Monte Carlo Simulation Guide by ABC.</p>
+
+#### References
+
+[1] M. Andrews, J. Alison, S. An, B. Burkle, S. Gleyzer, M. Narain, M. Paulini, B. Poczos, E. Usai, End-to-end jet classification of quarks and gluons with the CMS Open Data, Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment, Volume 977, 2020, 164304, ISSN 0168–9002,
+https://doi.org/10.1016/j.nima.2020.164304.
+
+[2] A. Hammad, Kyoungchul Kong, Myeonghun Park and Soyoung Shim, Quantum Metric Learning for New Physics Searches at the LHC, 2023, https://arxiv.org/pdf/2311.16866
+
+[3] Exploring Siamese Networks for Image Similarity using Contrastive Loss
+
+[4] Jaderberg, B., Anderson, L.W., Xie, W., Albanie, S., Kiffner, M. and Jaksch, D., 2022. Quantum self-supervised learning. Quantum Science and Technology, 7(3), p.035005.
+
+[5] Oh, S., Choi, J. and Kim, J., 2020, October. A tutorial on quantum convolutional neural networks (QCNN). In 2020 International Conference on Information and Communication Technology Convergence (ICTC) (pp. 236–239). IEEE.
+
+[6] Le-Khac, P.H., Healy, G. and Smeaton, A.F., 2020. Contrastive representation learning: A framework and review. Ieee Access, 8, pp.193907–193934.
+
+[7] Jaiswal, A., Babu, A.R., Zadeh, M.Z., Banerjee, D. and Makedon, F., 2020. A survey on contrastive self-supervised learning. Technologies, 9(1), p.2.
+
+[8] Khosla, P., Teterwak, P., Wang, C., Sarna, A., Tian, Y., Isola, P., Maschinot, A., Liu, C. and Krishnan, D., 2020. Supervised contrastive learning. Advances in neural information processing systems, 33, pp.18661–18673.
+
+[9] Wang, T. and Isola, P., 2020, November. Understanding contrastive representation learning through alignment and uniformity on the hypersphere. In International conference on machine learning (pp. 9929–9939). PMLR.
+
+[10] Liu, Y., Jin, M., Pan, S., Zhou, C., Zheng, Y., Xia, F. and Philip, S.Y., 2022. Graph self-supervised learning: A survey. IEEE transactions on knowledge and data engineering, 35(6), pp.5879–5900.
     </div>
 
 </body>
