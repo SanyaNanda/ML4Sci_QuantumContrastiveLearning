@@ -66,7 +66,7 @@ A comprehensive order to go through the jupyter notebooks
 - To train the QCL model on quark-gluon dataset run "python scripts/run_training.py"
 
   
-![run_training](assests/run_script.png)
+![run_training](docs/assets/run_script.png)
 
 
 To understand the project in depth refer the [mid-term evaluation blog](https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141) and summarised results can be found in this [presentation](slides/ML4Sci-MidTerm.pdf).
