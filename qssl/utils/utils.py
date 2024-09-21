@@ -8,23 +8,18 @@ import wandb
 import matplotlib.pyplot as plt
 import networkx as nx
 from torch_geometric.utils import to_networkx
+from sklearn.manifold import TSNE
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, auc
+
+
 
 def extract_embeddings(test_dataloader, model, N, reduce_to_dimension=2, device='cuda'):
     
     '''
     Use a test dataloader and torch model to extract N embeddings, reduce them to 
     reduce_to_dimension dimensions, then organize them into a dataframe with the GT labels
-    
-    output:
-    
-        | Embs   | Label
-    -------------------
-        [0.2,...]   3
-        [0.1,...]   5
-        [0.9,...]   4
-        ...
-        ..
-        
     '''
         
     model.eval()
@@ -38,15 +33,12 @@ def extract_embeddings(test_dataloader, model, N, reduce_to_dimension=2, device=
     for idx, dat in enumerate(test_dataloader):
         
         # Extract relevent data points from batch
-        x1 = dat['x1'] # (B,C,W,H)
-        x2 = dat['x2'] # (B,C,W,H)
-        labels = dat['labels'].type(torch.LongTensor) # (B,1)
-        
-        # Send inputs to correct device
-        # x1 = x1.to(device); x2 = x2.to(device)
+        x1 = dat['x1'] 
+        x2 = dat['x2'] 
+        labels = dat['labels'].type(torch.LongTensor) 
         
         # Pass inputs through model
-        emb1 = m(x1); emb2 = m(x2) #(B, EMB_SIZE)
+        emb1 = m(x1); emb2 = m(x2)
         
         # Add to running lists
         if embs is None:
@@ -79,14 +71,8 @@ def extract_embeddings(test_dataloader, model, N, reduce_to_dimension=2, device=
         embs = pca.fit_transform(embs)
         print(str(pca.explained_variance_ratio_.sum()) + " % variance explained using PCA")
 
-    
-    # When embeddings are 2-dimensional
-    #if reduce_to_
-    #embs_x = [e[0] for e in embs]; embs_y = [e[1] for e in embs]
     labs = [x.item() for x in labs]
-    df = pd.DataFrame({"Emb": list(embs), "Label": labs})
-    #df = pd.DataFrame({"X": embs_x, "Y": embs_y, "Label": labs})
-    
+    df = pd.DataFrame({"Emb": list(embs), "Label": labs})    
     return(df)
 
 
@@ -109,6 +95,7 @@ def plot_embeddings(emb_df):
 
 
 def plot_auc(labels, preds):
+    '''Plotas auc and logs to wandb'''
     auc = roc_auc_score(labels, preds)
     fpr, tpr, _ = roc_curve(labels, preds)
     plt.plot(fpr, tpr, label="AUC = {0}".format(auc))
@@ -120,6 +107,7 @@ def plot_auc(labels, preds):
 
 
 def visualize_graph_pairs(pairs, labels, num_pairs=3):
+    '''visualise graph views'''
     plt.figure(figsize=(10, 5 * num_pairs))
     
     for i, (data1, data2) in enumerate(pairs[:num_pairs]):
@@ -148,7 +136,9 @@ def visualize_graph_pairs(pairs, labels, num_pairs=3):
     plt.tight_layout()
     plt.show()
 
+
 def visualize_graph_pairs_01(pairs, labels):
+    '''Visualise graph positive and negative view'''
     plt.figure(figsize=(10, 10))
 
     pos_pair_found = False
@@ -201,6 +191,7 @@ def visualize_graph_pairs_01(pairs, labels):
     plt.show()
 
 def plot_and_save_loss(history):
+    '''Learning History Plot'''
     plt.figure(figsize=(10, 6))
     plt.plot(history["train_loss"], label="Train Loss", color='blue')
     plt.plot(history["val_loss"], label="Validation Loss", color='orange')
@@ -217,10 +208,9 @@ def plot_and_save_loss(history):
     
     plt.show()
 
-import matplotlib.pyplot as plt
-from sklearn.metrics import roc_curve, auc
 
 def plot_auc(model, dataloader):
+    '''Plots AUC'''
     model.eval()  # Set the model to evaluation mode
     y_true = []
     y_scores = []
@@ -251,9 +241,9 @@ def plot_auc(model, dataloader):
     plt.legend(loc="lower right")
     plt.show()
 
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 def plot_confusion_matrix(model, dataloader):
+    '''Plots confusion matrix'''
     model.eval()  # Set the model to evaluation mode
     y_true = []
     y_pred = []
@@ -280,9 +270,9 @@ def plot_confusion_matrix(model, dataloader):
     plt.title("Confusion Matrix")
     plt.show()
 
-from sklearn.manifold import TSNE
 
 def plot_embeddings(model, dataloader):
+    '''Plots embeddings'''
     model.eval()  # Set the model to evaluation mode
     embeddings = []
     labels = []
@@ -306,15 +296,5 @@ def plot_embeddings(model, dataloader):
     plt.colorbar()
     plt.show()
 
-def print_pair_embeddings(model, dataloader, pair_index=0):
-    model.eval()  # Set the model to evaluation mode
-    with torch.no_grad():
-        data1, data2, label = next(iter(dataloader))
-        emb1 = model(data1.x, data1.edge_index, data1.batch)
-        emb2 = model(data2.x, data2.edge_index, data2.batch)
-        
-        print(f"Embeddings for pair {pair_index}:")
-        print("Embedding 1:", emb1)
-        print("Embedding 2:", emb2)
-        print("Label:", label)
+
 

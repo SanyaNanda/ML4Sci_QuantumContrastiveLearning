@@ -5,8 +5,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import itertools
+import wandb
 
 def evaluate_precision_recall_accuracy(y_true, y_pred, threshold=0.5):
+    '''Returns Precision, Recall and Accuracy'''
     y_pred_binary = (y_pred >= threshold).astype(int)
     
     true_positives = np.sum((y_true == 1) & (y_pred_binary == 1))
@@ -20,7 +22,9 @@ def evaluate_precision_recall_accuracy(y_true, y_pred, threshold=0.5):
     
     return precision, recall, accuracy
 
+
 def confusion_matrix(y_true, y_pred, threshold=0.5):
+    '''Creates confusion matrix'''
     y_pred_binary = (y_pred >= threshold).astype(int)
     
     true_positives = np.sum((y_true == 1) & (y_pred_binary == 1))
@@ -33,45 +37,46 @@ def confusion_matrix(y_true, y_pred, threshold=0.5):
 
 
 def make_cm(y_true,y_pred,classes=None,figsize=(10,10),text_size=15):
-  cm = cmatrix(y_true,tf.round(y_pred))
-  cm_norm = cm.astype("float")/cm.sum(axis=1)[:,np.newaxis] # normalise confusion matrix
-  n_class = cm.shape[0]
+    '''Creates a pretty confusion matrix'''
+    cm = cmatrix(y_true,tf.round(y_pred))
+    cm_norm = cm.astype("float")/cm.sum(axis=1)[:,np.newaxis] # normalise confusion matrix
+    n_class = cm.shape[0]
 
-  fig, ax = plt.subplots(figsize=figsize)
-  cax = ax.matshow(cm,cmap=plt.cm.Blues)
-  fig.colorbar(cax)
+    fig, ax = plt.subplots(figsize=figsize)
+    cax = ax.matshow(cm,cmap=plt.cm.Blues)
+    fig.colorbar(cax)
 
-  if classes:
-    labels=classes
-  else:
-    labels=np.arange(cm.shape[0])
+    if classes:
+      labels=classes
+    else:
+      labels=np.arange(cm.shape[0])
 
-  ax.set(title="Confusion Matrix", 
-        xlabel="Predicted label",
-        ylabel="True label",
-        xticks=np.arange(n_class),
-        yticks=np.arange(n_class),
-        xticklabels=labels,
-        yticklabels=labels)
+    ax.set(title="Confusion Matrix", 
+          xlabel="Predicted label",
+          ylabel="True label",
+          xticks=np.arange(n_class),
+          yticks=np.arange(n_class),
+          xticklabels=labels,
+          yticklabels=labels)
 
-  ax.xaxis.set_label_position("bottom")
-  ax.xaxis.tick_bottom()
+    ax.xaxis.set_label_position("bottom")
+    ax.xaxis.tick_bottom()
 
-  ax.yaxis.label.set_size(text_size)
-  ax.xaxis.label.set_size(text_size)
-  ax.title.set_size(text_size)
+    ax.yaxis.label.set_size(text_size)
+    ax.xaxis.label.set_size(text_size)
+    ax.title.set_size(text_size)
+    
+    threshold = (cm.max()+cm.min())/2
 
-
-  threshold = (cm.max()+cm.min())/2
-
-  for i,j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-    plt.text(j,i,f"{cm[i,j]} ({cm_norm[i,j]*100:.1f})%",
-            horizontalalignment="center",
-            color="white" if cm[i,j]>threshold else "black",
-            size=text_size)
+    for i,j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+      plt.text(j,i,f"{cm[i,j]} ({cm_norm[i,j]*100:.1f})%",
+              horizontalalignment="center",
+              color="white" if cm[i,j]>threshold else "black",
+              size=text_size)
 
 
 def plot_auc(y_true, y_pred):
+    '''Plots AUC-ROC curve'''
     fpr, tpr, _ = roc_curve(y_true, y_pred)
     roc_auc = auc(fpr, tpr)
     
@@ -86,6 +91,53 @@ def plot_auc(y_true, y_pred):
     plt.legend(loc='lower right')
     plt.show()
 
-class Evaluate:
-    
-    
+
+# wandb enabled
+def plot_auc(labels, preds):
+    auc = roc_auc_score(labels, preds)
+    fpr, tpr, _ = roc_curve(labels, preds)
+    plt.plot(fpr, tpr, label="AUC = {0}".format(auc))
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.legend()
+    wandb.log({"Confusion Matrix": wandb.Image(plt)})
+    plt.show()
+
+def make_cm(y_true,y_pred,classes=None,figsize=(10,10),text_size=15):
+    cm = cmatrix(y_true,y_pred)
+    cm_norm = cm.astype("float")/cm.sum(axis=1)[:,np.newaxis] # normalise confusion matrix
+    n_class = cm.shape[0]
+
+    fig, ax = plt.subplots(figsize=figsize)
+    cax = ax.matshow(cm,cmap=plt.cm.Blues)
+    fig.colorbar(cax)
+
+    if classes:
+        labels=classes
+    else:
+        labels=np.arange(cm.shape[0])
+
+    ax.set(title="Confusion Matrix", 
+        xlabel="Predicted label",
+        ylabel="True label",
+        xticks=np.arange(n_class),
+        yticks=np.arange(n_class),
+        xticklabels=labels,
+        yticklabels=labels)
+
+    ax.xaxis.set_label_position("bottom")
+    ax.xaxis.tick_bottom()
+
+    ax.yaxis.label.set_size(text_size)
+    ax.xaxis.label.set_size(text_size)
+    ax.title.set_size(text_size)
+
+
+    threshold = (cm.max()+cm.min())/2
+
+    for i,j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j,i,f"{cm[i,j]} ({cm_norm[i,j]*100:.1f})%",
+            horizontalalignment="center",
+            color="white" if cm[i,j]>threshold else "black",
+            size=text_size)
+    wandb.log({"Confusion Matrix": wandb.Image(fig)})

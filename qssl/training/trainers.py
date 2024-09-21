@@ -7,57 +7,9 @@ from sklearn.metrics import roc_auc_score, roc_curve
 from sklearn.metrics import confusion_matrix as cmatrix
 import wandb
 import itertools
+from ..evaluation.evaluate import plot_auc, make_cm
 
-
-def plot_auc(labels, preds):
-    auc = roc_auc_score(labels, preds)
-    fpr, tpr, _ = roc_curve(labels, preds)
-    plt.plot(fpr, tpr, label="AUC = {0}".format(auc))
-    plt.xlabel('False Positive Rate')
-    plt.ylabel('True Positive Rate')
-    plt.legend()
-    wandb.log({"Confusion Matrix": wandb.Image(plt)})
-    plt.show()
-
-def make_cm(y_true,y_pred,classes=None,figsize=(10,10),text_size=15):
-    cm = cmatrix(y_true,y_pred)
-    cm_norm = cm.astype("float")/cm.sum(axis=1)[:,np.newaxis] # normalise confusion matrix
-    n_class = cm.shape[0]
-
-    fig, ax = plt.subplots(figsize=figsize)
-    cax = ax.matshow(cm,cmap=plt.cm.Blues)
-    fig.colorbar(cax)
-
-    if classes:
-        labels=classes
-    else:
-        labels=np.arange(cm.shape[0])
-
-    ax.set(title="Confusion Matrix", 
-        xlabel="Predicted label",
-        ylabel="True label",
-        xticks=np.arange(n_class),
-        yticks=np.arange(n_class),
-        xticklabels=labels,
-        yticklabels=labels)
-
-    ax.xaxis.set_label_position("bottom")
-    ax.xaxis.tick_bottom()
-
-    ax.yaxis.label.set_size(text_size)
-    ax.xaxis.label.set_size(text_size)
-    ax.title.set_size(text_size)
-
-
-    threshold = (cm.max()+cm.min())/2
-
-    for i,j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j,i,f"{cm[i,j]} ({cm_norm[i,j]*100:.1f})%",
-            horizontalalignment="center",
-            color="white" if cm[i,j]>threshold else "black",
-            size=text_size)
-    wandb.log({"Confusion Matrix": wandb.Image(fig)})
-
+## Trainer and tester for ResNet18
 
 class Trainer:
 

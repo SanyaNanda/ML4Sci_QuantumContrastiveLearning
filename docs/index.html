@@ -76,11 +76,13 @@
             max-width: 900px; /* Limit the content width for better readability */
         }
 
-        .content h1, h2, h3 {
-            color: #333;
+        .content h1, h2, h3, h4 {
+            color: #202669;
             margin-top: 30px; /* Spacing above headings */
             margin-bottom: 15px; /* Spacing below headings */
         }
+
+        /* #232751 */
 
         .content p {
             text-align: justify;
@@ -250,7 +252,7 @@
 
         <h2 id="background">Background</h2>
         <h3>LHC: Large Hadron Collider</h3>
-        <p>At LHC, scientists are looking into the unknown and probing the most fundamental questions about our Universe, like: 
+        <p>At <a href="https://home.cern/science/accelerators/large-hadron-collider">LHC</a>, scientists are looking into the unknown and probing the most fundamental questions about our Universe, like: 
         <em><b>"What is the Universe really made of? what forces act within it?"</b></em> and <em><b>"What gives everything substance?"</b></em>
         The Large Hadron Collider (LHC) is the world's largest and most powerful particle physics accelerator at CERN in Geneva, 
         Switzerland. It features a 27-kilometer ring of superconducting magnets, designed to accelerate particles to the speed of light and 
@@ -264,7 +266,7 @@
         </figure>
 
         <h3>CMS: Compact Muon Solenoid</h3>
-        <p>CMS is one of the large general-purpose detectors located at CERN's LHC. It is designed to investigate a broad range of 
+        <p><a href="https://cms.cern/detector">CMS</a> is one of the large general-purpose detectors located at CERN's LHC. It is designed to investigate a broad range of 
             physics, from studying the Higgs boson to searching for new particles that could explain the mysteries of our Universe.
             The CMS detector is massive and has a cylindrical onion-like structure with multiple layers 
             of detectors. These layers allow CMS to capture detailed photographs of the particle collisions occurring at the LHC. 
@@ -279,29 +281,29 @@
         <h3>What is High Energy Physics at CMS?</h3>
         
         <ol>
-        <li><b>Bending Particles</b></li>
-        <p> A powerful solenoid magnet bends the trajectories of charged particles as they fly outwards from the collision point. This helps in
+        <li><h4>Bending Particles</h4></li>
+        <p> A powerful solenoid magnet <a href="https://cms.cern/detector/bending-particles">bends the trajectories</a> of charged particles as they fly outwards from the collision point. This helps in
         identifying the charge of the particle and measure its momentum.
         </p>
-        <li><b>Identifying Tracks</b></li>
+        <li><h4>Identifying Tracks</h4></li>
         <p>The paths taken by these bent charged particles is calculated with a very high precision by using a silicon tracker
-            made with many electronic sensors arranged in concentric layers. When a charged particle flies through the Tracker layer, 
+            made with many electronic sensors arranged in concentric layers. When a charged particle flies through the <a href="https://cms.cern/detector/identifying-tracks">Tracker layer</a>, 
             it interacts electromagnetically with the silicon and produces a hit. 
             These hits are then joined together to identify the track of the traversing particle. The Tracker layer can be seen in <em>Figure 2</em>.
         </p>
-        <li><b>Measuring Energy</b></li>
+        <li><h4>Measuring Energy</h4></li>
         <p>The energies of the various particles produced in each collision is crucial to understanding what occurred 
             at the collision point. This information is collected from the two types of calorimeters in CMS as marked in <em>Figure 2</em>. 
             <ul>
-            <li><b>Electromagnetic Calorimeter (ECAL):</b> is the inner layer of the two and measures the energy of electrons and photons by stopping them completely.</li>
-            <li><b>Hadron Calorimeter (HCAL):</b> is the outer layer and it stops Hadrons, which are composite particles made up of quarks and gluons that fly through ECAL. </li>
+            <li><a href="https://cms.cern/detector/measuring-energy/energy-electrons-and-photons-ecal">Electromagnetic Calorimeter (ECAL):</a> is the inner layer of the two and measures the energy of electrons and photons by stopping them completely.</li>
+            <li><a href="https://cms.cern/detector/measuring-energy/energy-hadrons-hcal">Hadron Calorimeter (HCAL):</a> is the outer layer and it stops Hadrons, which are composite particles made up of quarks and gluons that fly through ECAL. </li>
         </ul>
         </p>
     </ol>
 
     <h2 id="data">Data: Quark Gluon Dataset from CMS</h2>
     <p>The <a href="https://opendata.cern.ch/docs/about-cms">CERN CMS Open Data Portal</a> makes simulated data available from experiments, which was used to derive the Quark-Gluon dataset 
-        by <a href="https://doi.org/10.1016/j.nima.2020.164304">S. Gleyzer et al</a> [1]. The goal is to discriminate between quark-initiated and gluon-initiated jets in the mentioned dataset. 
+        by S. Gleyzer et al <a href="#1"><u>[1]</u></a>. The goal is to discriminate between quark-initiated and gluon-initiated jets in the mentioned dataset. 
         The dataset consists of 933206 images with 3-channels of 125x125 shape, representing equal number of quarks and gluons. 
         The three channels in the images correspond to specific components of the CMS detector as discussed above: Track, ECAL and HCAL.
         Mean of all the images of this dataset are depicted in <em>Figure 3-4</em>.</p>
@@ -316,6 +318,10 @@
         <img src="assets/quarks.png">
         <figcaption>Figure 4: Mean of images of Quark for all 3 channels: Tracks, ECAL, HCAL respectively</figcaption>
         </figure>
+
+    <p><b>Quarks:</b> Fundamental particles that make up protons and neutrons.</p>
+    <p><b>Gluons:</b> Force carrier particles that mediate the strong force between quarks.</p>
+
 
         More Details about this dataset, along with Quark-Gluon properties and other datasets used in this project can be found in my
          <a href="https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141">Mid Term GSoC Blog</a>.
@@ -364,9 +370,24 @@
 
     <p>Similarly, for graph-based models the data was preprocessed and views were created explained above. <em>Figure 8</em> is a sample of views used for
         graph-based contrastive learning. The weights used in the graph are physics informed. There were 12500 graphs (jets) with 8 features per node depicting:
-        p_T(M),y,phi,m,E,px,py,pz. There are two classes namely Quark and Gluon. In a given graph, there are 8 nodes (particle IDs) and 
-        56 edges. The average node degree is 7 and the graphs are undirected. Furthermore, graph augmentations were employed while creating similar and dissimilar pairs.
-        Some graph augmentation techniques applied were node dropping, edge perturbation and feature masking [2]. 
+        
+
+        <ol>
+            <p>
+            <li><b>p_T:</b> Traverse Momentum is a measure of momentum of a particle perpendicular to the beamline or collision axis.</li>
+            <li><b>y:</b> Rapidity is a measure of how the particle's velocity compares to the speed of light in the direction of motion along the beamline.</li>
+            <li><b>phi:</b> Azimuthal Angle is the angle in the transverse plane, ranging from 0 to 2pi. It describes the direction of a particle's momentum in the plane perpendicular to the beamline.</li>
+            <li><b>m:</b> Rest mass of the particle.</li>
+            <li><b>E:</b> Total energy of the particle including both kinetic and rest energy.</li>
+            <li><b>px:</b> The momentum component along the x-axis.</li>
+            <li><b>py:</b> The momentum component along the y-axis.</li>
+            <li><b>pz:</b> The momentum component along the z-axis.</li>
+        </p>
+        </ol>
+        
+        There are two classes namely Quark and Gluon. In a given graph, there are 8 nodes (particle IDs) and 
+        56 edges. The average node degree is 7 and the graphs are undirected in nature reflecting that interactions between particles are bidirectional. Furthermore, graph augmentations were employed while creating similar and dissimilar pairs.
+        Some graph augmentation techniques applied were node dropping, edge perturbation and feature masking <a href="#2"><u>[2]</u></a>. 
         The augmentation helps the model to pick up qualities like robustness, expressivity, etc.</p>
 
 
@@ -374,12 +395,9 @@
 
     <h2 id="contrastive_learning">Contrastive Learning</h2>
 
-    <p>Representation learning is the task of extracting meaningful, useful and compressed representations of data elements 
-        so that they can be used in a wide range of downstream tasks like classification. Rather than 
-        relying on labeled datasets, self-supervised models generate implicit labels from unstructured data which allows the 
-        application of unsupervised learning for tasks that are conventionally solved using supervised learning. Contrastive learning is a type of representation learning. Contrastive models seek to quantify the similarity or dissimilarity 
-        between data elements. It learns by contrasting samples of dataset as similar or dissimilar. By contrasting positive (similar) 
-        and negative (dissimilar) pairs in the feature space, contrastive learning facilitates representation learning.</p>
+    <p>Representation learning involves extracting meaningful, compressed representations of data for various downstream tasks like classification, transfer learning etc.
+        Contrastive learning, a form of representation learning, quantifies similarity or dissimilarity between data elements by 
+        contrasting positive/similar and negative/dissimilar pairs in the feature space, facilitating effective representation learning.</p>
 
     <h3>Objective:</h3>
     <p>The primary objective is to minimize the distance between positive pairs while maximizing the distance between negative pairs in 
@@ -424,11 +442,12 @@
 
     <h4>3. NT-Xent Loss (Normalized Temperature-scaled Cross Entropy Loss)</h4>
     <p>NT-Xent is a specific formulation of the InfoNCE loss, it emphasizes the normalization of the loss over positive and negative pairs.
-        It's essentially same as InfoNCE but incorporates batch-wise negatives and ensures symmetry in the loss computation. The formula is same as above.</p>
+        It's essentially same as InfoNCE but incorporates batch-wise negatives and ensures symmetry in the loss computation. The formula is same as above.
+    You can find more about the variety of contrastive loss functions <a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/#simclr">here</a>.</p>
 
 
     <h3>Model Architecture:</h3>
-    Following are the four major components that make up the contrastive learning framework [3]:
+    Following are the four major components that make up the contrastive learning framework <a href="#3"><u>[3]</u></a>:
     <h4>1. Data Augmentation</h4>
     <p>It generates multiple views or versions of the same data point, which are treated as positive pairs. 
             The diversity introduced by augmentation helps the model learn invariant features, ensuring robustness to various transformations.</p>
@@ -453,6 +472,12 @@
             explained above.</p>
 
     <h3>Encoder Networks:</h3>
+
+    Explanation of Changes:
+
+Batch Normalization (BatchNorm1d): Helps in stabilizing and accelerating training by normalizing the embeddings.
+Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activation that maps the embeddings to a space suitable for contrastive loss.
+ 
 
     <h3>Training the model:</h3>
     <ol>
@@ -540,6 +565,35 @@
     </figure>
 
     <h2 id="quantum">Quantum Hybrid Models</h2>
+
+    <p>Quantum machine learning combines quantum computing and classical machine learning to enhance data processing and model performance 
+        by leveraging the three main quantum mechanics principles: Interference, Superposition and Entanglement.
+        Quantum machine learning aims to solve complex problems faster and more efficiently than classical algorithms as qubits, 
+        quantum analogue of classical bits can store more information at any given time, thanks to superposition. 
+        Quantum-enhanced models offer advantages in processing high-dimensional data and improving algorithmic performance of exisitin ML models.
+        Following are the quantum components used in the model architecture used in this study:</p>
+
+    <p>
+    <ul>
+    <li>Quantum Projection Head: The classical projection head after the encoder layers is replaced with a quantum circuit-based projection head using quantum layers. 
+        This potentially captures more complex relationships in the embedding space.</li>
+    <li>Quantum Layer: This is the layer where the parameterized quantum circuit (PQC) is applied using Pennylane QNode. It processes the embeddings from the classical encoder layers.</li>
+    <li>Quantum Circuit: A simple quantum circuit is defined to apply quantum gate-based rotations between the qubits in the Hilbert space, 
+        and then expectation values are measured.</li>
+    <li>Integration: After processing with the encoder layers, the embeddings are passed through the quantum layer and final embeddings are extracted from the circuit.</li>
+    </ul></p>
+
+    <p>Parameterized Quantum Circuits (PQCs) are fundamental building blocks in quantum machine learning (QML).PQCs consist of quantum 
+        gates with tunable parameters, typically optimized using machine learning optimization algorithms. There are various types of 
+        PQCs designed to suit different machine learning applications, each with unique characteristics. </p>
+        
+    <p>Below is an overview of the primary parameterized quantum circuits used in this project:</p>
+
+    <figure>
+        <img src="assets/qc1.png">
+        <figcaption>Figure 16: Quantum Circuit 1</figcaption>
+    </figure>
+
     
     <h2 id="benchmarking">Benchmarking</h2>
 
@@ -612,8 +666,8 @@
             </tr>
             <tr>
                 <td>GNN Encoder</td>
-                <td>71.79</td>
-                <td>0.7768</td>
+                <td>73.28%</td>
+                <td>0.7984</td>
                 <td><a href="https://api.wandb.ai/links/team-sanya/2ef8oxmq">https://api.wandb.ai/links/team-sanya/2ef8oxmq</a></td>
             </tr>
         </tbody>
@@ -632,16 +686,16 @@
         <tbody>
             <tr>
                 <td>GNN Encoder</td>
-                <td>add</td>
-                <td>add</td>
-                <td><a href="add">add</a></td>
+                <td>73.28%</td>
+                <td>0.7984</td>
+                <td><a href="https://wandb.ai/team-sanya/ML4Sci-QuantumContrastiveLearning/reports/GNN-vs-QGNN--Vmlldzo5NDQ1NjMw?accessToken=dewohw0x24gr3k0qkdhy6niypwav9taz071vf6bv1htnazag39xuz834wb4g4kil">Report</a></td>
             </tr>
             <!-- <tr class="active-row"> -->
             <tr>
-                <td>QGNN Encoder</td>
-                <td>add</td>
-                <td>add</td>
-                <td><a href="add">add</a></td>
+                <td>GNN Encoder + Quantum projection head</td>
+                <td>66.93%</td>
+                <td>0.7287</td>
+                <td><a href="https://wandb.ai/team-sanya/ML4Sci-QuantumContrastiveLearning/reports/GNN-vs-QGNN--Vmlldzo5NDQ1NjMw?accessToken=dewohw0x24gr3k0qkdhy6niypwav9taz071vf6bv1htnazag39xuz834wb4g4kil">Report</a></td>
             </tr>
         </tbody>
     </table>
@@ -691,11 +745,11 @@
 
         <h2 id="references">References</h2>
         <p>
-        [1] <a href="https://doi.org/10.1016/j.nima.2020.164304">M. Andrews, J. Alison, S. An, B. Burkle, S. Gleyzer, M. Narain, M. Paulini, B. Poczos, E. Usai, End-to-end jet classification of quarks and gluons with the CMS Open Data, Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment, Volume 977, 2020, 164304, ISSN 0168–9002,</a>.
+        [1] <a href="https://doi.org/10.1016/j.nima.2020.164304" id="1">M. Andrews, J. Alison, S. An, B. Burkle, S. Gleyzer, M. Narain, M. Paulini, B. Poczos, E. Usai, End-to-end jet classification of quarks and gluons with the CMS Open Data, Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment, Volume 977, 2020, 164304, ISSN 0168–9002,</a>.
         <br>
-        [2] <a href="https://arxiv.org/abs/2010.13902">You, Y., Chen, T., Sui, Y., Chen, T., Wang, Z. and Shen, Y., 2020. Graph contrastive learning with augmentations. Advances in neural information processing systems, 33, pp.5812-5823.</a>
+        [2] <a href="https://arxiv.org/abs/2010.13902" id="2">You, Y., Chen, T., Sui, Y., Chen, T., Wang, Z. and Shen, Y., 2020. Graph contrastive learning with augmentations. Advances in neural information processing systems, 33, pp.5812-5823.</a>
         <br>
-        [3] <a href="https://ieeexplore.ieee.org/abstract/document/9226466/">Le-Khac, P.H., Healy, G. and Smeaton, A.F., 2020. Contrastive representation learning: A framework and review. Ieee Access, 8, pp.193907-193934.</a></p>
+        [3] <a href="https://ieeexplore.ieee.org/abstract/document/9226466/" id="3">Le-Khac, P.H., Healy, G. and Smeaton, A.F., 2020. Contrastive representation learning: A framework and review. Ieee Access, 8, pp.193907-193934.</a></p>
 
 <!-- [2] A. Hammad, Kyoungchul Kong, Myeonghun Park and Soyoung Shim, Quantum Metric Learning for New Physics Searches at the LHC, 2023, https://arxiv.org/pdf/2311.16866
 

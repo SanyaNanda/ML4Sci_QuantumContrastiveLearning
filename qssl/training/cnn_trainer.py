@@ -3,8 +3,7 @@ from qssl.config import Config
 from qssl.loss.contrastive_pair_loss import Losses
 from tensorflow.keras import layers, models, optimizers
 
-
-
+## CNN Encoder Trainer
 class Trainer:
     def __init__(self, siamese_network, pairs_train, labels_train, pairs_test, labels_test):
         self.siamese_network = siamese_network
