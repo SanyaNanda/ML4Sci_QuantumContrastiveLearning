@@ -6,6 +6,58 @@ import numpy as np
 import pandas as pd
 import itertools
 import wandb
+import torch
+
+def run_model_lct(model, epoch, dataloader, lossFn, optimizer=None, train=True, return_embeddings=False):
+    if train:
+        model.train()
+    else:
+        model.eval()
+
+    total_loss = 0
+    correct = 0
+    num_samples = 0
+    all_embeddings = []
+    all_labels = []
+
+    for batch in dataloader:
+        optimizer.zero_grad() if train else None
+
+        # Extract the pairs and labels from the dataloader batch
+        data1, data2, labels = batch[0], batch[1], batch[2]
+        
+        # Get the embeddings for both graphs
+        emb1 = model(data1.x.float(), data1.edge_index, data1.batch)
+        emb2 = model(data2.x.float(), data2.edge_index, data2.batch)
+        
+        if return_embeddings:
+            # Save embeddings and labels for later use in classification
+            all_embeddings.append(emb1.detach().cpu())
+            all_labels.append(labels.detach().cpu())
+
+        # Compute contrastive loss
+        loss = lossFn(emb1, emb2, labels)
+        
+        if train:
+            loss.backward()
+            optimizer.step()
+
+        total_loss += loss.item() * data1.num_graphs
+        num_samples += data1.num_graphs
+
+        # Compute accuracy
+        with torch.no_grad():
+            cos_sim = torch.nn.functional.cosine_similarity(emb1, emb2)
+            predictions = (cos_sim > 0.5).long()  # You can adjust the threshold
+            correct += (predictions == labels).sum().item()
+
+    avg_loss = total_loss / num_samples
+    accuracy = correct / num_samples
+
+    if return_embeddings:
+        return torch.cat(all_embeddings, dim=0), torch.cat(all_labels, dim=0)
+    return avg_loss, accuracy
+
 
 def evaluate_precision_recall_accuracy(y_true, y_pred, threshold=0.5):
     '''Returns Precision, Recall and Accuracy'''
