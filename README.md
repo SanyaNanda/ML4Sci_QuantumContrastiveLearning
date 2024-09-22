@@ -10,9 +10,8 @@
 As part of GSoC 2024, I contributed in Machine Learning for Science (ML4Sci). It is an open-source organization that brings together modern machine learning techniques and applies them to cutting edge problems in Science, Technology, Engineering, and Math (STEM). Over the summer, I worked on Quantum Machine Learning applied on High Energy Physics data (QMLHEP) to contrastively train models to output embeddings that can be used for other downstream tasks like classification.
 
 - Code on QMLHEP GitHub Repository: [ML4SCI/QMLHEP/tree/main/Quantum_SSL_for_HEP_Sanya_Nanda](https://github.com/ML4SCI/QMLHEP/tree/main/Quantum_SSL_for_HEP_Sanya_Nanda)
-- Code on my GitHub Repository: [SanyaNanda/ML4Sci_QuantumContrastiveLearning](https://github.com/SanyaNanda/ML4Sci_QuantumContrastiveLearning)
+- Code on my GitHub Repository: [SanyaNanda/ML4Sci_QuantumContrastiveLearning](https://github.com/SanyaNanda/ML4Sci_QuantumContrastiveLearning) (For latest updates post GSoC)
 - Project Documentation: [Technical Documentation/Final blog](https://sanyananda.github.io/ML4Sci_QuantumContrastiveLearning/)
-- WandB Experiment Runs and Reports: 
 
 
 <b>[Project description: Learning quantum representations of classical high energy physics data with contrastive learning](https://ml4sci.org/gsoc/2024/proposal_QMLHEP3.html)</b>
@@ -60,11 +59,18 @@ At ML4Sci, presenting our work and ideas is just as important as working towards
 
 #### Jupyter Notebooks
 A comprehensive order to go through the jupyter notebooks
-- [Data Visualisation](notebooks/Experiment_MNIST_0_1/1_data_loading_visualization.ipynb)
-- [Classical CNN Base Model on MNIST](notebooks/Experiment_MNIST_0_1/2_classical_base_model_mnist.ipynb)
+- [Classical GNN Model on Quark-Gluon](notebooks/gnn_cl_lct.ipynb)
+- [Quantum GNN vs Classical on Quark-Gluon](notebooks/qgnn_cl_lct.ipynb)
+- Different QGNNs on Quark-Gluon: [QC1](notebooks/qgnn_cl_lct.ipynb), [QC2](notebooks/qgnns.ipynb), [QC3](notebooks/qgnns1.ipynb)
+  
+- [Classical CNN Base Model on MNIST](notebooks/Experiment_MNIST_0_1/2_classical_base_model_mnist-wandb.ipynb)
 - [Quantum Hybrid CNN on MNIST](notebooks/Experiment_MNIST_0_1/3_hybrid_base_model_mnist.ipynb)
-- [Classical GNN Model on Quark-Gluon]()
-- [Quantum GNN vs Classical on Quark-Gluon]()
+- CNN on quark-gluon: [Experiments on quark-gluon](notebooks/Experiment_quark_gluon)
+  
+- [Quark-Gluon data visualisation](notebooks/Experiment_quark_gluon/1_1_data_visualisation_preprocessing_qg.ipynb)
+- [Quark-Gluon preprocessing and augmentation](notebooks/Experiment_quark_gluon/2_data_preprocessing_augmentation.ipynb)
+- [QCNN on quark-gluon](notebooks/Experiment_quark_gluon/3_exp3_base_hybrid.ipynb)
+- [Resnet on quark-gluon 1](notebooks/qg_resnet.ipynb), [Resnet on quark-gluon 2](notebooks/Experiment_quark_gluon/3_exp2_resnet18.ipynb)
 
 
 #### Description of Directories and files
@@ -85,6 +91,7 @@ A comprehensive order to go through the jupyter notebooks
 
 - `notebooks/`: Directory for Jupyter notebooks. [Comprehensive Guide to navigate notebooks](#Jupyter-Notebooks)
 - `slides/`: Directory for presentation slides, lightning talks, proposal etc
+- `docs/`: Directory for html and assets for the project documentation github.io page
 - `requirements.txt`: File listing the dependencies for the project.
 - `setup.py`: Setup script for the package.
 - `README.md`: This file.
@@ -94,6 +101,9 @@ A comprehensive order to go through the jupyter notebooks
 <hr>
 
 ### Experimentation Outcomes:
+
+#### WandB Reports
+Experiments in a tabular format can be found in the [Benchmarking](https://sanyananda.github.io/ML4Sci_QuantumContrastiveLearning/#benchmarking) section of the project documentation. Wandb reports can be found in the same section.
 
 <hr>
 
