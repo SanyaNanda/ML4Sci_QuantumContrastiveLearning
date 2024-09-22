@@ -471,13 +471,18 @@
             process by providing gradients that adjust the model parameters to improve performance. Some examples used in this project were
             explained above.</p>
 
-    <h3>Encoder Networks:</h3>
+    <h3>Encoder Networks & Projection Head:</h3>
 
-    Explanation of Changes:
+    
+    <p>Graph Neural Networks optimise transformations on all attributes of graph; on a node, edge and global level, at the same time 
+    preserving symmetries. The GNN encoder used has GATConv layers, followed by batch normalization to stabilize training by normalizing 
+    the embeddings. Furthermore, residual connections were added between layers to help prevent gradient vanishing and improve training 
+    in deep networks. As the projection head, both mean and max pooling was used  to capture a richer set of information from the nodes, 
+    which improves performance in graph classification tasks. More can be understood by looking at the code here.</p>
 
-Batch Normalization (BatchNorm1d): Helps in stabilizing and accelerating training by normalizing the embeddings.
-Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activation that maps the embeddings to a space suitable for contrastive loss.
- 
+    <p>Convolutional Neural Network follows the same framework and is detailed in the mid term blog, more 
+        about its componenets can be understood in this video I made. ResNet used is a further enhancement to the computer vision models used.
+        Experiments on quantum-based projecition head was conducted out, which is detailed in a section below.</p>
 
     <h3>Training the model:</h3>
     <ol>
@@ -591,11 +596,32 @@ Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activ
 
     <figure>
         <img src="assets/qc1.png">
-        <figcaption>Figure 16: Quantum Circuit 1</figcaption>
+        <figcaption>Figure 16: Quantum Circuit 1: Ry Rotations and Entanglement</figcaption>
     </figure>
+
+    <figure>
+        <img src="assets/qc2.png">
+        <figcaption>Figure 17: Quantum Circuit 2: Angle embedding and Entanglement</figcaption>
+    </figure>
+
+    <figure>
+        <img src="assets/qc3.png">
+        <figcaption>Figure 18: Quantum Circuit 3: Amplitude embedding and Entanglement</figcaption>
+    </figure>
+
+    <p>These are the main circuits experimented, the number of qubits and layers were played around with and some samples can be seen 
+    in mid term report.</p>
+
+    <h4>Quantum Fidelity</h4>
 
     
     <h2 id="benchmarking">Benchmarking</h2>
+
+    <p>Table 1, illustrates the result of CNN encoder on MNIST and Quark-Gluon pairs. First round of experiments were conducted on different pairs of MNIST numbers
+    that look a like; 0-1, 3-8, 9-6. MNIST data was used for quick experimentation and validation of approach being used. The results on MNIST showed the 
+    utility of the framework. Good results were achieved using the classical computer vision based contrastive learning model as Table 1 shows. Further, 
+    respecting wandb reports for each run can be viewed for a detailed inspection of the result. The model worked moderately on the Quark-Gluon data classically, 
+    so the next architectural, encoder and quantum experiments were done on this dataset to log improvements from the base.</p>
 
     <table class="styled-table">
         <thead>
@@ -613,7 +639,7 @@ Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activ
                 <td>CNN Encoder + contrastive pair</td>
                 <td>0.000911</td>
                 <td>0.9997</td>
-                <td><a href="https://api.wandb.ai/links/team-sanya/y1wub07">https://api.wandb.ai/links/team-sanya/y1wub07</a></td>
+                <td><a href="https://api.wandb.ai/links/team-sanya/y1wub07">Report</a></td>
             </tr>
             <!-- <tr class="active-row"> -->
             <tr>
@@ -621,14 +647,14 @@ Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activ
                 <td>CNN Encoder + contrastive pair</td>
                 <td>0.004080</td>
                 <td>0.9977</td>
-                <td><a href="https://api.wandb.ai/links/team-sanya/ckm7lfdf">https://api.wandb.ai/links/team-sanya/ckm7lfdf</a></td>
+                <td><a href="https://api.wandb.ai/links/team-sanya/ckm7lfdf">Report</a></td>
             </tr>
             <tr>
                 <td>9-6 MNIST</td>
                 <td>CNN Encoder + contrastive pair</td>
                 <td>0.002580</td>
                 <td>0.9994</td>
-                <td><a href="https://api.wandb.ai/links/team-sanya/ykftki1q">https://api.wandb.ai/links/team-sanya/ykftki1q</a></td>
+                <td><a href="https://api.wandb.ai/links/team-sanya/ykftki1q">Report</a></td>
             </tr>
             <tr>
                 <td>Quark-Gluon</td>
@@ -640,6 +666,11 @@ Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activ
         </tbody>
     </table>
 
+    <p>Table 2, shows the result of different classical encoders on Quark-Gluon dataset. The first row is same as the last row of Table 1 and it shows the performace of CNN encoder.
+        The next row shows the result from ResNet18 which are promising and can be enhanced further. Less data samples were used with ResNet as it a huge model and is naturally time consuming.
+        Finally, GNNs were explored and they gave good results with an AUC nearing to 0.8, which is considred a good model and even so for HEP dataset due to their inherent complexities.</p>
+    </p>
+
 
     <table class="styled-table">
         <thead>
@@ -647,7 +678,7 @@ Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activ
                 <th>Model</th>
                 <th>Test Accuracy (%)</th>
                 <th>AUC</th>
-                <th>WandB Report</th>
+                <!-- <th>WandB Report</th> -->
             </tr>
         </thead>
         <tbody>
@@ -655,24 +686,29 @@ Projection Head (self.projection_head): A simple two-layer MLP with a ReLU activ
                 <td>CNN Encoder</td>
                 <td>add</td>
                 <td>add</td>
-                <td><a href="add">add</a></td>
+                <!-- <td><a href="add">add</a></td> -->
             </tr>
             <!-- <tr class="active-row"> -->
             <tr>
                 <td>ResNet18 Encoder</td>
-                <td>60.02</td>
-                <td>0.54</td>
-                <td><a href="add">add</a></td>
+                <td>60.02%</td>
+                <td>0.5416</td>
+                <!-- <td><a href="add">volcanic-star-18 Run in wandb</a></td> -->
             </tr>
             <tr>
                 <td>GNN Encoder</td>
                 <td>73.28%</td>
                 <td>0.7984</td>
-                <td><a href="https://api.wandb.ai/links/team-sanya/2ef8oxmq">https://api.wandb.ai/links/team-sanya/2ef8oxmq</a></td>
+                <!-- <td><a href="https://api.wandb.ai/links/team-sanya/2ef8oxmq">https://api.wandb.ai/links/team-sanya/2ef8oxmq</a></td> -->
             </tr>
         </tbody>
     </table>
 
+    <p>Table 3, compares the classical vs quantum models on Quark-Gluon dataset. As the GNN model performed best in Table 2, naturally beacuse of 
+        the sparce nature of particle cloud dataset. The quantum hybrids were tried with all models, but only the results with GNN are show below for 
+        easy comparison. It is evident that quantum hybrid models have a comparable performace to classical model, even though they are bound by parameters like
+        the number of qubits that can be used as of date.
+    </p>
 
     <table class="styled-table">
         <thead>
