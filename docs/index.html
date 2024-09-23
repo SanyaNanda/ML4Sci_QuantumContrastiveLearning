@@ -302,17 +302,16 @@
             <h3>Project</h3>
             <a href="https://ml4sci.org/gsoc/2024/proposal_QMLHEP3.html">Learning quantum representations of classical high-energy physics data with contrastive learning:</a>
             <li>Implemented multiple trainable embedding functions to encode HEP data onto contrastive learning models.</li>
-            <li>Developed numerous computer vision, graph-based and quantum hybrid models for contrastive learning framework.</li>
+            <li>Developed computer vision, graph-based and quantum hybrid models for contrastive learning framework.</li>
             <li>Experimented with different approaches for embedding functions and contrastive losses for training.</li>
             <li>Demonstrated an effort to prove quantum advantage using Quantum ML-based hybrid model.</li>
-            <li>Benchmarked the trained embeddings of classical and quantum models. </li>
+            <li>Benchmarked the trained embeddings of classical and quantum models using downstream tasks. </li>
         </section>
         <section id="background">
             <h2>Background</h2>
             <h3>LHC: Large Hadron Collider</h3>
             <p>At <a href="https://home.cern/science/accelerators/large-hadron-collider">LHC</a>, scientists are looking into the unknown and probing the most fundamental questions about our Universe, like:
-            <em><b>"What is the Universe really made of? what forces act within it?"</b></em> and <em><b>"What gives everything substance?"</b></em>
-            The Large Hadron Collider (LHC) is the world's largest and most powerful particle physics accelerator at CERN in Geneva,
+            <em><b>"What is the Universe really made of? what forces act within it?"</b></em>. The Large Hadron Collider (LHC) is the world's largest and most powerful particle physics accelerator at CERN in Geneva,
             Switzerland. It features a 27-kilometer ring of superconducting magnets, designed to accelerate particles to the speed of light and
             collide them to explore fundamental physics. The collider has been instrumental in significant discoveries, including the Higgs boson.
             In total, the LHC is comprised of seven separate experiments, few can be seen in <em>Figure 1</em>.
@@ -324,10 +323,9 @@
             </figure>
 
             <h3>CMS: Compact Muon Solenoid</h3>
-            <p><a href="https://cms.cern/detector">CMS</a> is one of the large general-purpose detectors located at CERN's LHC. It is designed to investigate a broad range of
-                physics, from studying the Higgs boson to searching for new particles that could explain the mysteries of our Universe.
-                The CMS detector is massive and has a cylindrical onion-like structure with multiple layers
-                of detectors. These layers allow CMS to capture detailed photographs of the particle collisions occurring at the LHC.
+            <p><a href="https://cms.cern/detector">CMS</a> is one of the detectors located at CERN's LHC, designed to investigate a broad range of
+                physics. The CMS detector is massive and has a cylindrical onion-like structure with multiple layers
+                of detectors. These layers allow CMS to capture detailed photographs of the particle collisions occurring at LHC.
                 To top it all, CMS measures the properties of well-known particles with unprecedented precision and is on
                 the lookout for completely new and unknown phenomenas.</p>
 
@@ -340,18 +338,18 @@
 
             <ol>
             <li><h4>Bending Particles</h4></li>
-            <p> A powerful solenoid magnet <a href="https://cms.cern/detector/bending-particles">bends the trajectories</a> of charged particles as they fly outwards from the collision point. This helps in
-            identifying the charge of the particle and measure its momentum.
+            <p> A powerful solenoid magnet <a href="https://cms.cern/detector/bending-particles">bends the trajectories</a> of charged particles as they fly outwards from the collision point. This helps to
+            identify the charge of the particle and measure its momentum.
             </p>
             <li><h4>Identifying Tracks</h4></li>
-            <p>The paths taken by these bent charged particles is calculated with a very high precision by using a silicon tracker
-                made with many electronic sensors arranged in concentric layers. When a charged particle flies through the <a href="https://cms.cern/detector/identifying-tracks">Tracker layer</a>,
+            <p>The path of the bent charged particles is calculated with a very high precision by using a silicon tracker
+                consisting of many electronic sensors arranged in concentric layers. When a charged particle flies through the <a href="https://cms.cern/detector/identifying-tracks">Tracker layer</a>,
                 it interacts electromagnetically with the silicon and produces a hit.
                 These hits are then joined together to identify the track of the traversing particle. The Tracker layer can be seen in <em>Figure 2</em>.
             </p>
             <li><h4>Measuring Energy</h4></li>
             <p>The energies of the various particles produced in each collision is crucial to understanding what occurred
-                at the collision point. This information is collected from the two types of calorimeters in CMS as marked in <em>Figure 2</em>.
+                at the collision point. This information is collected from the two calorimeters in CMS as marked in <em>Figure 2</em>.
                 <ul>
                 <li><a href="https://cms.cern/detector/measuring-energy/energy-electrons-and-photons-ecal">Electromagnetic Calorimeter (ECAL):</a> is the inner layer of the two and measures the energy of electrons and photons by stopping them completely.</li>
                 <li><a href="https://cms.cern/detector/measuring-energy/energy-hadrons-hcal">Hadron Calorimeter (HCAL):</a> is the outer layer and it stops Hadrons, which are composite particles made up of quarks and gluons that fly through ECAL. </li>
@@ -362,9 +360,9 @@
         <section id="data">
             <h2>Data: Quark Gluon Dataset from CMS</h2>
             <p>The <a href="https://opendata.cern.ch/docs/about-cms">CERN CMS Open Data Portal</a> makes simulated data available from experiments, which was used to derive the Quark-Gluon dataset
-            by S. Gleyzer et al <a href="#1"><u>[1]</u></a>. The goal is to discriminate between quark-initiated and gluon-initiated jets in the mentioned dataset.
+            by S. Gleyzer et al <a href="#1"><u>[1]</u></a>. The goal of this project is to discriminate between quark-initiated and gluon-initiated jets in the mentioned dataset.
             The dataset consists of 933206 images with 3-channels of 125x125 shape, representing equal number of quarks and gluons.
-            The three channels in the images correspond to specific components of the CMS detector as discussed above: Track, ECAL and HCAL.
+            The three channels in the images correspond to measurements from components of the CMS detector as discussed above: Track, ECAL and HCAL.
             Mean of all the images of this dataset are depicted in <em>Figure 3-4</em>.</p>
             <figure class="center-figure">
             <img src="assets/gluons.png" alt="Gluon Image">
@@ -381,7 +379,7 @@
         </section>
         <section id="data_preprocessing">
             <h2>Data Preprocessing</h2>
-            <p>Data Preprocessing and Exploratory Data Analysis is of high significance to ensure good quality data for model training. In Machine Learning cycle,
+            <p>Data Preprocessing is of high significance to ensure good quality data for model training. In Machine Learning cycle,
             this is the most important step and it ensures a better performing model. </p>
             <p>For the computer vision models used in contrastive learning framework, the 3 channels of the Quark-Gluon dataset were first analysed from
             a physics perspective as explained above and then the images were preprocessed as shown in this <a href="https://github.com/ML4SCI/QMLHEP/blob/main/Quantum_SSL_for_HEP_Sanya_Nanda/notebooks/Experiment_quark_gluon/2_data_preprocessing_pairs.ipynb">code</a>.
@@ -403,40 +401,38 @@
                 <figcaption>Figure 7: Quark Gluon pair/view (from wandb experiment run)</figcaption>
             </figure>
 
-            <p>The rational behind creating views or pairs for contrastive learning involves creating only positive views. Positive views are created
+            <p>The logic behind creating views or pairs for contrastive learning involves creation of positive views. Positive views are created
                 by taking an image and creating a pair or view by augmenting it. This is done for both quark (0) and gluon (1). Views created by using quarks
-                and it's augmented version is called a similar pair and assigned label 0 and the similarly created views of gluons are called dissimilar and labelled as 1.
+                and it's augmented version is called a similar pair and assigned label 1 and the similarly created views of gluons are called dissimilar and labelled as 0.
                 Views from the same sample and views from different samples are considered postive and negative, respectively. While training the model, we consider every pair
                 other than the given sample as negative. The context of positive and negative pair is created only in terms of the loss function and the
-                model doesn't have any idea about the view concept. It is the loss function that nudges the model in the direction of clustering the similar samples together. More on this
-                is detailed in the contrastive learning section.
+                model doesn't have idea about the view concept. It is the loss function that nudges the model in the direction of clustering similar samples together. More on this
+                is detailed in the <a href="#contrastive_learning">contrastive learning section</a>.
             </p>
             <figure class="center-figure">
                 <img src="assets/qg_graph_views.png">
                 <figcaption>Figure 8: Quark-Gluon positive-negative views</figcaption>
             </figure>
 
-            <p>Similarly, for graph-based models the data was preprocessed and views were created explained above. <em>Figure 8</em> is a sample of views used for
-                graph-based contrastive learning. The weights used in the graph are physics informed. There were 12500 graphs (jets) with 8 features per node depicting:
-
-
+            <p>Similarly, for graph-based models the data was preprocessed and views were created as explained above. <em>Figure 8</em> is a sample of views used for
+                graph-based contrastive learning. The weights used in the graph are physics informed. There were 12500 graphs or jets with 8 features per node depicting physics based attributes, as follows:
                 <ol>
                     <p>
                     <li><b>p_T:</b> Traverse Momentum is a measure of momentum of a particle perpendicular to the beamline or collision axis.</li>
                     <li><b>y:</b> Rapidity is a measure of how the particle's velocity compares to the speed of light in the direction of motion along the beamline.</li>
-                    <li><b>phi:</b> Azimuthal Angle is the angle in the transverse plane, ranging from 0 to 2pi. It describes the direction of a particle's momentum in the plane perpendicular to the beamline.</li>
+                    <li><b>phi:</b> Azimuthal Angle is the angle in the transverse plane, ranging from 0 to 2pi. It describes the direction of a particle's momentum perpendicular to the beamline.</li>
                     <li><b>m:</b> Rest mass of the particle.</li>
-                    <li><b>E:</b> Total energy of the particle including both kinetic and rest energy.</li>
+                    <li><b>E:</b> Total energy of the particle, both kinetic and potential energy.</li>
                     <li><b>px:</b> The momentum component along the x-axis.</li>
                     <li><b>py:</b> The momentum component along the y-axis.</li>
                     <li><b>pz:</b> The momentum component along the z-axis.</li>
                 </p>
                 </ol>
 
-                There are two classes namely Quark and Gluon. In a given graph, there are 8 nodes (particle IDs) and
-                56 edges. The average node degree is 7 and the graphs are undirected in nature reflecting that interactions between particles are bidirectional. Furthermore, graph augmentations were employed while creating similar and dissimilar pairs.
+                There are two classes namely Quark and Gluon. In a given graph, there are 8 nodes or particle IDs, 
+                56 edges and average node degree is 7. The graphs are undirected, reflecting that interactions between particles are bidirectional. Furthermore, graph augmentations were employed while creating similar and dissimilar pairs.
                 Some graph augmentation techniques applied were node dropping, edge perturbation and feature masking <a href="#2"><u>[2]</u></a>.
-                The augmentation helps the model to pick up qualities like robustness, expressivity, etc.</p>
+                The augmentations help the model in picking qualities like robustness, expressivity, etc.</p>
         </section>
         <section id="contrastive_learning">
 
@@ -470,7 +466,7 @@
         </ul>
 
         <h4>2. InfoNCE Loss</h4>
-        <p>InfoNCE is a type of contrastive loss that leverages multiple negative samples within a batch to improve representation learning. .</p>
+        <p>InfoNCE is a type of contrastive loss that leverages multiple negative samples within a batch to improve representation learning.</p>
 
         <p>The InfoNCE loss for a positive pair \( (i, j) \) is defined as:</p>
         <p>
@@ -490,28 +486,28 @@
         <h4>3. NT-Xent Loss (Normalized Temperature-scaled Cross Entropy Loss)</h4>
         <p>NT-Xent is a specific formulation of the InfoNCE loss, it emphasizes the normalization of the loss over positive and negative pairs.
             It's essentially same as InfoNCE but incorporates batch-wise negatives and ensures symmetry in the loss computation. The formula is same as above.
-        You can find more about the variety of contrastive loss functions <a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/#simclr">here</a>.</p>
+        More about the variety of contrastive loss functions can be found <a href="https://lilianweng.github.io/posts/2021-05-31-contrastive/#simclr">here</a>.</p>
 
 
         <h3>Model Architecture:</h3>
         Following are the four major components that make up the contrastive learning framework <a href="#3"><u>[3]</u></a>:
         <h4>1. Data Augmentation</h4>
-        <p>It generates multiple views or versions of the same data point, which are treated as positive pairs.
-                The diversity introduced by augmentation helps the model learn invariant features, ensuring robustness to various transformations.</p>
+        <p>It generates multiple views of the same data point, which are treated as positive pairs.
+            The diversity introduced by augmentation helps the model learn invariant features.</p>
 
         <h4>2. Encoder Network</h4>
             <ul>
             <li><p>The encoder network transforms raw input data into high-dimensional embeddings or feature vectors. Its primary objective is
-                to capture the underlying structure and semantics of the data, facilitating effective comparison between data points. </p></li>
-            <li><p>In our case, for MNIST images and Quark-Gluon images dataset we used CNN and Resnet. For, the
-                graph views of Quark-Gluon data we used GNN with different layeras and the quantum hybrid as the encoder, returning embeddings
+                to capture the underlying structure of the data, facilitating effective comparison between data points. </p></li>
+            <li><p>In our case, for MNIST and Quark-Gluon image datasets, CNN and Resnet encoders were used. For the
+                graph views of Quark-Gluon data, GNN and its quantum hybrid were used as the encoder, returning embeddings
                 in a high dimensionality space upon training.</p></li>
             </ul>
 
         <h4>3. Projection Head</h4>
             <p>The projection head maps the high-dimensional embeddings produced by the encoder into a lower-dimensional space where the
                 contrastive loss is applied. This separation allows the encoder to learn features beneficial for downstream tasks, while
-                the projection head focuses on the contrastive objective. Many quantum versions of the projection head were experimented in the study by introducing quantum layers.</p>
+                the projection head focuses on the contrastive objective. Numerous quantum versions of the projection head were experimented in the study by introducing quantum layers.</p>
 
         <h4>4. Loss Function</h4>
             <p>The loss function quantifies how well the model distinguishes between positive and negative pairs. It guides the optimization
@@ -523,19 +519,19 @@
 
         <p>Graph Neural Networks optimise transformations on all attributes of graph; on a node, edge and global level, at the same time
         preserving symmetries. The GNN encoder used has GATConv layers, followed by batch normalization to stabilize training by normalizing
-        the embeddings. Furthermore, residual connections were added between layers to help prevent gradient vanishing and improve training
-        in deep networks. As the projection head, both mean and max pooling was used  to capture a richer set of information from the nodes,
-        which improves performance in graph classification tasks. More can be understood by looking at the code here.</p>
+        the embeddings. Furthermore, residual connections were added between layers to help prevent gradient vanishing and improve training. 
+        As the projection head, mean and max pooling were used to capture a richer set of information from the nodes,
+        to improve performance in graph classification tasks.</p>
 
-        <p>Convolutional Neural Network follows the same framework and is detailed in the mid term blog, more
-            about its componenets can be understood in this video I made. ResNet used is a further enhancement to the computer vision models used.
-            Experiments on quantum-based projecition head was conducted out, which is detailed in a section below.</p>
+        <p>Convolutional Neural Network follows the same framework and is detailed in the <a href="https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141">Mid Term GSoC Blog</a>. 
+            ResNet used is a further enhancement to the computer vision models used.
+            Experimentation on quantum-based projection head was conducted thoroughly, which is detailed in a section below.</p>
 
         <h3>Training the model:</h3>
         <ol>
-            <li><b>Data Augmentation:</b> For each input data point, apply two different random augmentations to create a positive pair.
+            <li><b>Data Augmentation:</b> For each input data point, apply different augmentations to create a positive pair.
             </li>
-            <li><b>Encoding:</b> Pass both augmented views through the encoder network to obtain their embeddings.
+            <li><b>Encoding:</b> Pass augmented views through the encoder network to obtain embeddings.
             </li>
             <li><b>Projection:</b> Use the projection head to map the embeddings into the latent space where contrastive loss is applied.
             </li>
@@ -551,23 +547,21 @@
             <h2>Model Evaluation</h2>
 
             <p>After the training was complete, all models were evalauted as detailed in this section.
-                All experiments are tracked using weights and biases functionalities. Below, we will be looking in depth on the results
+                All experiments are tracked using weights and biases functionalities. Below, we will look into results
                 from classical GNN encoder network on Quark-Gluon views (<a href="https://api.wandb.ai/links/team-sanya/2ef8oxmq">GNN wandb report</a>)
                 and classical CNN encoder on MNIST 3-8 views (<a href="https://api.wandb.ai/links/team-sanya/ckm7lfdf">CNN wandb report</a>) using contrastive pair loss. Similarly,
-                all the models were evaluated and their wandb reports and results are logged in the next section on benchmarking.
+                all the models were evaluated and their wandb reports and results are logged in the next <a href="#benchmarking">section on benchmarking</a>.
             </p>
 
 
 
             <h3>Evaluation 1: Learning History</h3>
             <p>Learning history is logged across the epochs while training the model on train and validation datasets. <em>Figure 9</em> shows
-                the training and validation learning curve for classical GNN encoder network when run on Quark-Gluon graph views.</p>
+                the training and validation learning curve for classical GNN encoder network when running on Quark-Gluon graph views.</p>
             <figure class="center-figure">
                 <img src="assets/lh_gnn.png">
                 <figcaption>Figure 9: Learning History of GNN while training on Quark-Gluon graph views</figcaption>
             </figure>
-
-            <p>CNN encoder on MNIST learnt faster in less epochs due to simplicity of the dataset.</p>
 
             <h3>Evaluation 2: Test Embeddings plot using TSNE</h3>
             <p>The embeddings projected by the CNN encoder for MNIST 3-8 dataset are represented in <em>Figure 10</em>. The embeddings are in higher
@@ -581,8 +575,8 @@
 
             <h3>Evaluation 3: Test Predicitons</h3>
             <p>In <em>Figure 11</em>, test prediction on a positive sample is plotted along with embedding vector in high dimensionality. It is evident
-                that the close numbers appear in the same positions, indicating that the two samples of 3 are plotted nearer to each other. Whereas,
-                in <em>Figure 12</em>, it is visible that the embeddings of 3 and 8 are distant from each other.</p>
+                that the close numbers appear in the same positions in the embedding, indicating that the two samples of 3 are plotted nearer to each other. Whereas,
+                in <em>Figure 12</em>, it is clear that the embeddings of 3 and 8 are distant from each other.</p>
 
             <figure class="center-figure">
                 <img src="assets/33_emb.png" alt="MNIST 3-3 pair embedding">
@@ -594,7 +588,7 @@
                 <figcaption>Figure 12: MNIST 3-8 pair embedding</figcaption>
             </figure>
 
-            <h3>Evaluation 4: Downstream Task; Linear Classification Test</h3>
+            <h3>Evaluation 4: Downstream Task:- Linear Classification Test</h3>
             <p>The accuracy of the generated embeddings can be tested by using them for downstream tasks and thereby evaluating the task for its effectiveness. For the
                 GNN encoder, the linear classification test is implemented and the efficiency is measured using confusion matrix <em>(Figure 13)</em> and
                 AUC-ROC curve <em>(Figure 14)</em>.</p>
@@ -612,71 +606,75 @@
 
 
             <p>On the contrary, CNN encoder on MNIST performs well in less epochs due to the simplicity of the dataset, it's AUC is nearing to 1
-                and the confusion matrix <em>(Figure 15)</em> shows that the model makes almost no mistakes. The same CNN when applied on Quark-Gluon images, doesn't perform well at all.</p>
+                and the confusion matrix <em>(Figure 15)</em> shows that the model makes almost no mistakes. The same CNN when applied on Quark-Gluon images, doesn't perform well.</p>
 
             <figure class="center-figure">
                 <img src="assets/38_cm.png">
                 <figcaption>Figure 15: Confusion Matrix on MNIST 3-8</figcaption>
             </figure></section>
+
         <section id="quantum">
             <h2>Quantum Hybrid Models</h2>
 
             <p>Quantum machine learning combines quantum computing and classical machine learning to enhance data processing and model performance
                 by leveraging the three main quantum mechanics principles: Interference, Superposition and Entanglement.
-                Quantum machine learning aims to solve complex problems faster and more efficiently than classical algorithms as qubits,
-                quantum analogue of classical bits can store more information at any given time, thanks to superposition.
-                Quantum-enhanced models offer advantages in processing high-dimensional data and improving algorithmic performance of exisitin ML models.
+                Quantum machine learning aims to solve complex problems faster and more efficiently than classical algorithms as qubits, the
+                quantum analogue of classical bits can store more information at a given time, due to superposition.
                 Following are the quantum components used in the model architecture used in this study:</p>
 
-            <p>
+            
             <ul>
                 <li>Quantum Projection Head: 
                     <p>The classical projection head after the encoder layers is replaced with a quantum circuit-based projection head using quantum layers.
                     This potentially captures more complex relationships in the embedding space.</p></li>
                 <li>Quantum Layer: 
-                    <p>This is the layer where the parameterized quantum circuit (PQC) is applied using Pennylane QNode. It processes the embeddings from the classical encoder layers.</p></li>
+                    <p>This is the layer where the parameterized quantum circuit (PQC) is applied using Pennylane. It processes the embeddings from the classical encoder layers.</p></li>
                 <li>Quantum Circuit: 
                     <p>A simple quantum circuit is defined to apply quantum gate-based rotations between the qubits in the Hilbert space,
                     and then expectation values are measured.</p></li>
-            </ul></p>
+            </ul>
 
-            <p>Parameterized Quantum Circuits (PQCs) are fundamental building blocks in quantum machine learning (QML).PQCs consist of quantum
-                gates with tunable parameters, typically optimized using machine learning optimization algorithms. There are various types of
-                PQCs designed to suit different machine learning applications, each with unique characteristics. </p>
+            <p>Parameterized Quantum Circuits (PQCs) are fundamental building blocks in quantum machine learning. PQCs consist of quantum
+                gates with tunable parameters, optimized during ML training. Following is an overview of the primary PQCs used in this project:</p>
 
-            <p>Below is an overview of the primary parameterized quantum circuits used in this project:</p>
+            <p><em>Figure 16</em>, shows a quantum circuit with Ry rotations followed by entanglement.</p>
 
             <figure class="center-figure">
                 <img src="assets/qc1.png">
-                <figcaption>Figure 16: Quantum Circuit 1: Ry Rotations and Entanglement</figcaption>
+                <figcaption>Figure 16: Quantum Circuit 1:- Ry Rotations and Entanglement</figcaption>
             </figure>
+            <p><em>Figure 17</em>, shows a quantum circuit with angle embedding template from Pennylane followed by entanglement.</p>
+
 
             <figure class="center-figure">
                 <img src="assets/qc2.png">
-                <figcaption>Figure 17: Quantum Circuit 2: Angle embedding and Entanglement</figcaption>
+                <figcaption>Figure 17: Quantum Circuit 2:- Angle embedding and Entanglement</figcaption>
             </figure>
+
+            <p><em>Figure 18</em>, shows a quantum circuit with amplitude embedding followed by entanglement.</p>
+
 
             <figure class="center-figure">
                 <img src="assets/qc3.png">
-                <figcaption>Figure 18: Quantum Circuit 3: Amplitude embedding and Entanglement</figcaption>
+                <figcaption>Figure 18: Quantum Circuit 3:- Amplitude embedding and Entanglement</figcaption>
             </figure>
 
-            <p>These are the main circuits experimented, the number of qubits and layers were played around with and some samples can be seen
-                in mid term report.</p>
+            <p>Aforementioned are the main circuits used in experiments, the number of qubits and layers were played around with and some other samples can also be found
+                in <a href="https://medium.com/@sanya.nanda/quantum-contrastive-learning-on-lhc-hep-dataset-1b3084a0b141">Mid Term GSoC Blog</a>.</p>
 
             <h4>Quantum Fidelity</h4>
-            <p>Fidelity of quantum states is a quantum equivalent of a similarity score between the quantum states. It was used in one of the 
+            <p>Fidelity is a quantum equivalent of a similarity score between the quantum states. It was used in one of the 
                 quantum-hybrid experiments along with the previously defined loss functions to observe its effect on embeddings.
             </p>
         </section>
         <section id="benchmarking">
             <h2>Benchmarking</h2>
 
-            <p>Table 1, illustrates the result of CNN encoder on MNIST and Quark-Gluon pairs. First round of experiments were conducted on different pairs of MNIST numbers
-                that look a like; 0-1, 3-8, 9-6. MNIST data was used for quick experimentation and validation of approach being used. The results on MNIST showed the
-                utility of the framework. Good results were achieved using the classical computer vision based contrastive learning model as Table 1 shows. Further,
-                respecting wandb reports for each run can be viewed for a detailed inspection of the result. The model worked moderately on the Quark-Gluon data classically,
-                so the next architectural, encoder and quantum experiments were done on this dataset to log improvements from the base.</p>
+            <p>Table 1, illustrates the result of CNN encoder on MNIST and Quark-Gluon image pairs. First round of experiments were conducted on different pairs of MNIST numbers
+                that look alike; 0-1, 3-8, 9-6. MNIST data was used for quick experimentation and validation of approach being used. The results on MNIST showed the
+                utility of the framework. Good results were achieved using the classical computer vision based contrastive learning model as shown in Table 1. Additionally,
+                respective wandb reports for each run can be viewed for a detailed inspection of the results. The model worked moderately on the Quark-Gluon data,
+                so the next experiments were done on this dataset to log improvements from the base.</p>
 
             <div class="center-table">
                 <table class="styled-table">
@@ -695,7 +693,7 @@
                         <td>CNN Encoder + contrastive pair</td>
                         <td>0.000911</td>
                         <td>0.9997</td>
-                        <td><a href="https://api.wandb.ai/links/team-sanya/y1wub07">Report</a></td>
+                        <td><a href="https://api.wandb.ai/links/team-sanya/y1wub07y">Report 1</a></td>
                     </tr>
                     <!-- <tr class="active-row"> -->
                     <tr>
@@ -703,14 +701,14 @@
                         <td>CNN Encoder + contrastive pair</td>
                         <td>0.004080</td>
                         <td>0.9977</td>
-                        <td><a href="https://api.wandb.ai/links/team-sanya/ckm7lfdf">Report</a></td>
+                        <td><a href="https://api.wandb.ai/links/team-sanya/ckm7lfdf">Report 2</a></td>
                     </tr>
                     <tr>
                         <td>9-6 MNIST</td>
                         <td>CNN Encoder + contrastive pair</td>
                         <td>0.002580</td>
                         <td>0.9994</td>
-                        <td><a href="https://api.wandb.ai/links/team-sanya/ykftki1q">Report</a></td>
+                        <td><a href="https://api.wandb.ai/links/team-sanya/ykftki1q">Report 3</a></td>
                     </tr>
                     <tr>
                         <td>Quark-Gluon</td>
@@ -724,9 +722,11 @@
                 <div class="table-caption">Table 1: CNN encoder on MNIST and Quark-Gluon</div>
             </div>
 
-            <p>Table 2, shows the result of different classical encoders on Quark-Gluon dataset. The first row is same as the last row of Table 1 and it shows the performace of CNN encoder.
-                The next row shows the result from ResNet18 which are promising and can be enhanced further. Less data samples were used with ResNet as it a huge model and is naturally time consuming.
-                Finally, GNNs were explored and they gave good results with an AUC nearing to 0.8, which is considred a good model and even so for HEP dataset due to their inherent complexities.</p>
+            <p>Table 2, shows the result of different classical encoders on Quark-Gluon dataset. The first row is same as the last row of Table 1 and it shows the performance of CNN encoder.
+                The next row shows the result from ResNet18 which are promising and can be enhanced further. Less data samples were used with ResNet as it is a huge model and was naturally time-consuming.
+                Finally, GNNs were explored and they gave good results with an AUC nearing to 0.8, which is considered as a good model and even so for HEP dataset due to their inherent complexities.
+                For more details of the GNN Encoder run, checkout its <a href="https://api.wandb.ai/links/team-sanya/2ef8oxmq">Report 4</a>. 
+            </p>
             </p>
 
 
@@ -766,9 +766,10 @@
             </div>
 
             <p>Table 3, compares the classical vs quantum models on Quark-Gluon dataset. As the GNN model performed best in Table 2, naturally beacuse of
-                the sparce nature of particle cloud dataset. The quantum hybrids were tried with all models, but only the results with GNN are show below for
+                the sparse nature of particle cloud dataset. The quantum hybrids were tried with most of the models, but only the results with GNN are shown below for
                 easy comparison. It is evident that quantum hybrid models have a comparable performace to classical model, even though they are bound by parameters like
-                the number of qubits that can be used as of date.
+                the number of qubits that can be used as of date. The following report 5, shows that quantum-hybrids work better in 10 epochs and in report 6
+                gnn takes over with more epochs.
             </p>
 
             <div class="center-table">
@@ -786,14 +787,28 @@
                         <td>GNN Encoder</td>
                         <td>73.28%</td>
                         <td>0.7984</td>
-                        <td><a href="https://wandb.ai/team-sanya/ML4Sci-QuantumContrastiveLearning/reports/GNN-vs-QGNN--Vmlldzo5NDQ1NjMw?accessToken=dewohw0x24gr3k0qkdhy6niypwav9taz071vf6bv1htnazag39xuz834wb4g4kil">Report</a></td>
+                        <td><a href="https://api.wandb.ai/links/team-sanya/tqwcvetq">Report 5</a>, 
+                        <a href="https://api.wandb.ai/links/team-sanya/2a1xeyfy">Report 6</a></td>
                     </tr>
                     <!-- <tr class="active-row"> -->
                     <tr>
-                        <td>GNN Encoder + Quantum projection head</td>
+                        <td>GNN Encoder + Quantum projection head (QC1)</td>
                         <td>66.93%</td>
                         <td>0.7287</td>
-                        <td><a href="https://wandb.ai/team-sanya/ML4Sci-QuantumContrastiveLearning/reports/GNN-vs-QGNN--Vmlldzo5NDQ1NjMw?accessToken=dewohw0x24gr3k0qkdhy6niypwav9taz071vf6bv1htnazag39xuz834wb4g4kil">Report</a></td>
+                        <td><a href="https://api.wandb.ai/links/team-sanya/tqwcvetq">Report 5</a>,
+                        <a href="https://api.wandb.ai/links/team-sanya/2a1xeyfy">Report 6</a></td>
+                    </tr>
+                    <tr>
+                        <td>GNN Encoder + (QC2) + Fidelity</td>
+                        <td>60.37%</td>
+                        <td>0.6448</td>
+                        <td><a href="">Report 7</a></td>
+                    </tr>
+                    <tr>
+                        <td>GNN Encoder + QC3</td>
+                        <td>67.02%</td>
+                        <td>0.7285</td>
+                        <td><a href="https://api.wandb.ai/links/team-sanya/m9ziuhqc">Report 8</a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -803,22 +818,22 @@
         <section id="conclusion"><h2>Conclusion</h2>
             <p>It can be concluded that quantum and classical contrastive learning works effectively on MNIST as well as HEP dataset like Quark-Gluon. It is noteworthy that
                 a simple CNN encoder based model is almost always correct when working on MNIST dataset in less number of iterations. The same model
-                doesn't perform as well on the HEP data. Upgrading the computer vision model to ResNet18 encoder, shows improvement on the HEP dataset. Implementing
+                doesn't perform as well on the HEP data. Upgrading the computer vision model to ResNet18 encoder, shows improvement on the HEP dataset. Moreover, implementing
                 GNN based encoders by converting HEP particle cloud data to a graph shows considerable improvement in accuracy on the downstream tasks.
-                The quantum hybrid models show comparable and in most cases slightly better performance in terms of AUC on the datasets used. In conclusion,
+                The quantum hybrid models show comparable and sometimes slightly better performance in terms of AUC on the datasets used. In conclusion,
                 all the experiments conducted show the viability of using respresentation learning from both classical and quantum perspectives on
                 HEP dataset to generate embeddings that can be meaningfully used in downstream tasks. Studies like these conducted at ML4Sci makes sure that
                 LHC is future ready for it's next wave of experiments that will generate data in huge numbers, requiring ML models to make sense of everything more efficiently.
-                A research of the kind of LHC increases our understanding of what is and can eventually spark new technologies that change the world we live in.</p>
+                A research of the kind of LHC increases our understanding of what exists and can eventually spark new technologies that change the world we live in.</p>
         </section>
         <section id="future_scope">
             <h2>Future Scope</h2>
             <ul>
-                <li><p>Currently, the experiments were done with 12.5k data points while the complete dataset has 933k data points. The Quark-Gluon dataset is quite big in comparison and we must
-                    experiment on the complete dataset to learn more and observe the effect on the current results. Additionally, existing models can be tuned further
+                <li><p>Currently, the experiments were done with 12.5k data points while the complete dataset has 933k data points. The complete Quark-Gluon dataset is quite big in comparison and consequently
+                    experiments on the complete dataset is required to learn more and observe the effect on the current results. Additionally, existing models can be tuned further
                     for better performance.</p> </li>
-                <li><p>Experiment with a more types of loss functions and architectures is crucial. There are many more frameworks in the literature which weren't
-                    tested like MoCo, BYOL etc. Experiment with a larger variety of quantum circuits found in literature and trying out fully quantum models vouch as good next steps.</p></li>
+                <li><p>Experiment with more types of loss functions and architectures is crucial. There are many more frameworks in the literature which weren't
+                    tested like MoCo, BYOL etc. Experiments with a larger variety of quantum circuits found in literature would be beneficial and trying fully quantum models vouch as a good next step.</p></li>
             </ul></section>
         <section id="acknowledgement">
             <h2 >Acknowledgment</h2>
@@ -845,25 +860,15 @@
         <br>
         [2] <a href="https://arxiv.org/abs/2010.13902" id="2">You, Y., Chen, T., Sui, Y., Chen, T., Wang, Z. and Shen, Y., 2020. Graph contrastive learning with augmentations. Advances in neural information processing systems, 33, pp.5812-5823.</a>
         <br>
-        [3] <a href="https://ieeexplore.ieee.org/abstract/document/9226466/" id="3">Le-Khac, P.H., Healy, G. and Smeaton, A.F., 2020. Contrastive representation learning: A framework and review. Ieee Access, 8, pp.193907-193934.</a></p>
-
-<!-- [2] A. Hammad, Kyoungchul Kong, Myeonghun Park and Soyoung Shim, Quantum Metric Learning for New Physics Searches at the LHC, 2023, https://arxiv.org/pdf/2311.16866
-
-[3] Exploring Siamese Networks for Image Similarity using Contrastive Loss
-
-[4] Jaderberg, B., Anderson, L.W., Xie, W., Albanie, S., Kiffner, M. and Jaksch, D., 2022. Quantum self-supervised learning. Quantum Science and Technology, 7(3), p.035005.
-
-[5] Oh, S., Choi, J. and Kim, J., 2020, October. A tutorial on quantum convolutional neural networks (QCNN). In 2020 International Conference on Information and Communication Technology Convergence (ICTC) (pp. 236–239). IEEE.
-
-[6] Le-Khac, P.H., Healy, G. and Smeaton, A.F., 2020. Contrastive representation learning: A framework and review. Ieee Access, 8, pp.193907–193934.
-
-[7] Jaiswal, A., Babu, A.R., Zadeh, M.Z., Banerjee, D. and Makedon, F., 2020. A survey on contrastive self-supervised learning. Technologies, 9(1), p.2.
-
-[8] Khosla, P., Teterwak, P., Wang, C., Sarna, A., Tian, Y., Isola, P., Maschinot, A., Liu, C. and Krishnan, D., 2020. Supervised contrastive learning. Advances in neural information processing systems, 33, pp.18661–18673.
-
-[9] Wang, T. and Isola, P., 2020, November. Understanding contrastive representation learning through alignment and uniformity on the hypersphere. In International conference on machine learning (pp. 9929–9939). PMLR.
-
-[10] Liu, Y., Jin, M., Pan, S., Zhou, C., Zheng, Y., Xia, F. and Philip, S.Y., 2022. Graph self-supervised learning: A survey. IEEE transactions on knowledge and data engineering, 35(6), pp.5879–5900. -->
+        [3] <a href="https://ieeexplore.ieee.org/abstract/document/9226466/" id="3">Le-Khac, P.H., Healy, G. and Smeaton, A.F., 2020. Contrastive representation learning: A framework and review. Ieee Access, 8, pp.193907-193934.</a>
+        <br>
+        [4] <a href="https://arxiv.org/pdf/2311.16866" id="4">A. Hammad, Kyoungchul Kong, Myeonghun Park and Soyoung Shim, Quantum Metric Learning for New Physics Searches at the LHC, 2023</a>
+        <br>
+        [5] <a href="https://arxiv.org/abs/2103.14653">Jaderberg, B., Anderson, L.W., Xie, W., Albanie, S., Kiffner, M. and Jaksch, D., 2022. Quantum self-supervised learning. Quantum Science and Technology, 7(3), p.035005.</a>
+        <br>
+        [6] <a href="https://arxiv.org/abs/2011.00362">Jaiswal, A., Babu, A.R., Zadeh, M.Z., Banerjee, D. and Makedon, F., 2020. A survey on contrastive self-supervised learning. Technologies, 9(1), p.2.</a>
+        <br>
+        [7] <a href="https://arxiv.org/abs/2103.00111">Liu, Y., Jin, M., Pan, S., Zhou, C., Zheng, Y., Xia, F. and Philip, S.Y., 2022. Graph self-supervised learning: A survey. IEEE transactions on knowledge and data engineering, 35(6), pp.5879–5900.</a></p>
     </div>
 
 </body>

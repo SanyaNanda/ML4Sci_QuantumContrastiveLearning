@@ -5,7 +5,7 @@ n_qubits = 6
 dev = qml.device('default.qubit', wires=n_qubits)
 
 @qml.qnode(dev, interface='torch')
-def quantum_circuit_angle_entangle(inputs, weights):
+def quantum_circuit_angle_entangle_weights(inputs, weights):
     # Explicit AngleEmbedding gates (RY rotations)
     for i in range(n_qubits):
         qml.RY(inputs[i], wires=i)
@@ -16,6 +16,17 @@ def quantum_circuit_angle_entangle(inputs, weights):
             qml.RX(weights[layer][i], wires=i)
         for i in range(n_qubits - 1):
             qml.CNOT(wires=[i, i+1])  # Chain entanglement
+    return [qml.expval(qml.PauliZ(wires=i)) for i in range(n_qubits)]
+
+
+@qml.qnode(dev, interface='torch')
+def quantum_circuit_angle_entangle_inputs(inputs):
+    for i in range(n_qubits):
+        qml.RY(inputs[i], wires=i)
+    for i in range(n_qubits):
+        qml.RX(inputs[i], wires=i) 
+    for i in range(n_qubits - 1):
+        qml.CNOT(wires=[i, i + 1])  
     return [qml.expval(qml.PauliZ(wires=i)) for i in range(n_qubits)]
 
 

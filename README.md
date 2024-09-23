@@ -30,7 +30,7 @@ Following are important documents pertaining to the project:
 - Complete technical documentation or final blog, describing the whole project in depth, submitted for final evaluation: [Blog](https://sanyananda.github.io/ML4Sci_QuantumContrastiveLearning/)
 - Final-term lightning talk given to an audience of all the contributors and mentors of ML4Sci as part of final evaluation: [Final Lightning Talk Presentation](slides/ML4Sci-FinalEvaluation.pdf)
 - GSoC Lightning Talk, presented to all the contributors of GSoC 2024 on 25th September: [GSoC Presentation](slides/GSoC2024-LightningTalk-Contributor-SanyaNanda.pdf)
-- Weights and Biases Reports on the experiments conducted: [wandb reports]()
+- Weights and Biases Reports on the experiments conducted: [Benchmarking](https://sanyananda.github.io/ML4Sci_QuantumContrastiveLearning/#benchmarking) section of the project documentation
 
 
 <hr>
@@ -58,10 +58,12 @@ At ML4Sci, presenting our work and ideas is just as important as working towards
 
 
 #### Jupyter Notebooks
-A comprehensive order to go through the jupyter notebooks
+A comprehensive order to go through the jupyter notebooks:
+
+It is advisable to walthrough these notebooks along with the project documentation.
 - [Classical GNN Model on Quark-Gluon](notebooks/gnn_cl_lct.ipynb)
 - [Quantum GNN vs Classical on Quark-Gluon](notebooks/qgnn_cl_lct.ipynb)
-- Different QGNNs on Quark-Gluon: [QC1](notebooks/qgnn_cl_lct.ipynb), [QC2](notebooks/qgnns.ipynb), [QC3](notebooks/qgnns1.ipynb)
+- Different QGNNs on Quark-Gluon: [QC1](notebooks/qgnn_cl_lct.ipynb), [QC2](notebooks/qgnns1.ipynb), [QC3](notebooks/qgnns2.ipynb)
   
 - [Classical CNN Base Model on MNIST](notebooks/Experiment_MNIST_0_1/2_classical_base_model_mnist-wandb.ipynb)
 - [Quantum Hybrid CNN on MNIST](notebooks/Experiment_MNIST_0_1/3_hybrid_base_model_mnist.ipynb)
@@ -81,14 +83,10 @@ A comprehensive order to go through the jupyter notebooks
   - `loss/`: Directory for loss function scripts consisting of contrastive pair loss, infoNCE, NT-Xent and fidelity loss functions.
   - `models/`: Directory for model definitions consisting of cnn, resnet18 and gnn encoders along with quantum circuits and hybrids.
   - `training/`: Directory for training scripts consisting of trainers for the models
-  - `evaluation/`: Directory for evaluation scripts consisting of helper functions like confusion matrix, auc etc
+  - `evaluation/`: Directory for evaluation scripts consisting of helper functions like confusion matrix, auc, lct etc
   - `utils/`: Directory for utility scripts consisiting of functions for extracting and plotting embeddings
   - `config.py`: Configuration file for the project.
-
 - `scripts/`: Directory for scripts to run training and evaluation.
-  - `run_training.py`: Script to run the training process.
-  - `run_evaluation.py`: Script to run the evaluation process.
-
 - `notebooks/`: Directory for Jupyter notebooks. [Comprehensive Guide to navigate notebooks](#Jupyter-Notebooks)
 - `slides/`: Directory for presentation slides, lightning talks, proposal etc
 - `docs/`: Directory for html and assets for the project documentation github.io page
@@ -102,7 +100,6 @@ A comprehensive order to go through the jupyter notebooks
 
 ### Experimentation Outcomes:
 
-#### WandB Reports
 Experiments in a tabular format can be found in the [Benchmarking](https://sanyananda.github.io/ML4Sci_QuantumContrastiveLearning/#benchmarking) section of the project documentation. Wandb reports can be found in the same section.
 
 <hr>
