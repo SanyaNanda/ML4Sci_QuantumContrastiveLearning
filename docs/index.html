@@ -348,7 +348,7 @@
                 These hits are then joined together to identify the track of the traversing particle. The Tracker layer can be seen in <em>Figure 2</em>.
             </p>
             <li><h4>Measuring Energy</h4></li>
-            <p>The energies of the various particles produced in each collision is crucial to understanding what occurred
+            <p>The energies of the various particles produced in each collision are crucial to understanding what occurred
                 at the collision point. This information is collected from the two calorimeters in CMS as marked in <em>Figure 2</em>.
                 <ul>
                 <li><a href="https://cms.cern/detector/measuring-energy/energy-electrons-and-photons-ecal">Electromagnetic Calorimeter (ECAL):</a> is the inner layer of the two and measures the energy of electrons and photons by stopping them completely.</li>
@@ -403,7 +403,7 @@
 
             <p>The logic behind creating views or pairs for contrastive learning involves creation of positive views. Positive views are created
                 by taking an image and creating a pair or view by augmenting it. This is done for both quark (0) and gluon (1). Views created by using quarks
-                and it's augmented version is called a similar pair and assigned label 1 and the similarly created views of gluons are called dissimilar and labelled as 0.
+                and it's augmented version is called a similar pair and assigned new label 1 and the similarly created views of gluons are called dissimilar and labelled as 0.
                 Views from the same sample and views from different samples are considered postive and negative, respectively. While training the model, we consider every pair
                 other than the given sample as negative. The context of positive and negative pair is created only in terms of the loss function and the
                 model doesn't have idea about the view concept. It is the loss function that nudges the model in the direction of clustering similar samples together. More on this
@@ -619,7 +619,7 @@
             <p>Quantum machine learning combines quantum computing and classical machine learning to enhance data processing and model performance
                 by leveraging the three main quantum mechanics principles: Interference, Superposition and Entanglement.
                 Quantum machine learning aims to solve complex problems faster and more efficiently than classical algorithms as qubits, the
-                quantum analogue of classical bits can store more information at a given time, due to superposition.
+                quantum analogue of classical bits, can store more information at a given time due to superposition.
                 Following are the quantum components used in the model architecture used in this study:</p>
 
             
@@ -671,7 +671,7 @@
             <h2>Benchmarking</h2>
 
             <p>Table 1, illustrates the result of CNN encoder on MNIST and Quark-Gluon image pairs. First round of experiments were conducted on different pairs of MNIST numbers
-                that look alike; 0-1, 3-8, 9-6. MNIST data was used for quick experimentation and validation of approach being used. The results on MNIST showed the
+                that look alike; 0-1, 3-8, 9-6. MNIST data was used for quick experimentation and validation of the approach being used. The results on MNIST showed the
                 utility of the framework. Good results were achieved using the classical computer vision based contrastive learning model as shown in Table 1. Additionally,
                 respective wandb reports for each run can be viewed for a detailed inspection of the results. The model worked moderately on the Quark-Gluon data,
                 so the next experiments were done on this dataset to log improvements from the base.</p>
@@ -722,7 +722,7 @@
                 <div class="table-caption">Table 1: CNN encoder on MNIST and Quark-Gluon</div>
             </div>
 
-            <p>Table 2, shows the result of different classical encoders on Quark-Gluon dataset. The first row is same as the last row of Table 1 and it shows the performance of CNN encoder.
+            <p>Table 2, shows the result of different classical encoders on Quark-Gluon dataset. The first row is the same as the last row of Table 1 and it shows the performance of CNN encoder.
                 The next row shows the result from ResNet18 which are promising and can be enhanced further. Less data samples were used with ResNet as it is a huge model and was naturally time-consuming.
                 Finally, GNNs were explored and they gave good results with an AUC nearing to 0.8, which is considered as a good model and even so for HEP dataset due to their inherent complexities.
                 For more details of the GNN Encoder run, checkout its <a href="https://api.wandb.ai/links/team-sanya/2ef8oxmq">Report 4</a>. 
@@ -765,11 +765,11 @@
                 <div class="table-caption">Table 2: Different classical encoders on Quark-Gluon</div>
             </div>
 
-            <p>Table 3, compares the classical vs quantum models on Quark-Gluon dataset. As the GNN model performed best in Table 2, naturally beacuse of
+            <p>Table 3, compares the classical vs quantum GNN models on Quark-Gluon dataset as the GNN model performed the best in Table 2, naturally because of
                 the sparse nature of particle cloud dataset. The quantum hybrids were tried with most of the models, but only the results with GNN are shown below for
-                easy comparison. It is evident that quantum hybrid models have a comparable performace to classical model, even though they are bound by parameters like
-                the number of qubits that can be used as of date. The following report 5, shows that quantum-hybrids work better in 10 epochs and in report 6
-                gnn takes over with more epochs.
+                easy comparison. It is evident that quantum hybrid models have a comparable performance to classical model, even though they are bound by parameters like
+                the number of qubits that can be used as of date. The following report 5 shows that quantum-hybrids work better in 10 epochs and in report 6
+                GNN takes over with more epochs.
             </p>
 
             <div class="center-table">
@@ -816,14 +816,14 @@
             </div>
         </section>
         <section id="conclusion"><h2>Conclusion</h2>
-            <p>It can be concluded that quantum and classical contrastive learning works effectively on MNIST as well as HEP dataset like Quark-Gluon. It is noteworthy that
+            <p>It can be concluded that quantum and classical contrastive learning works effectively on MNIST as well as HEP datasets like Quark-Gluon. It is noteworthy that
                 a simple CNN encoder based model is almost always correct when working on MNIST dataset in less number of iterations. The same model
-                doesn't perform as well on the HEP data. Upgrading the computer vision model to ResNet18 encoder, shows improvement on the HEP dataset. Moreover, implementing
+                doesn't perform as well on the HEP data. Upgrading the computer vision model to ResNet18 encoder shows improvement on the HEP dataset. Moreover, implementing
                 GNN based encoders by converting HEP particle cloud data to a graph shows considerable improvement in accuracy on the downstream tasks.
                 The quantum hybrid models show comparable and sometimes slightly better performance in terms of AUC on the datasets used. In conclusion,
                 all the experiments conducted show the viability of using respresentation learning from both classical and quantum perspectives on
-                HEP dataset to generate embeddings that can be meaningfully used in downstream tasks. Studies like these conducted at ML4Sci makes sure that
-                LHC is future ready for it's next wave of experiments that will generate data in huge numbers, requiring ML models to make sense of everything more efficiently.
+                HEP dataset to generate embeddings that can be meaningfully used in downstream tasks. Studies like these conducted at ML4Sci make sure that
+                LHC is equipped for it's next wave of experiments that will generate data in huge numbers, requiring ML models to make sense of everything more efficiently.
                 A research of the kind of LHC increases our understanding of what exists and can eventually spark new technologies that change the world we live in.</p>
         </section>
         <section id="future_scope">
