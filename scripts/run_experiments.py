@@ -207,10 +207,14 @@ def make_quantum_head(name: str, n_qubits: int, n_layers: int, init_scale: float
 
     dev_name = "default.qubit" if noise_track == "A" else "default.mixed"
     dev = qml.device(dev_name, wires=n_qubits)
+    # backprop traces the circuit as PyTorch matrix ops — ~100x faster than
+    # parameter-shift on GPU.  default.mixed doesn't support backprop, so
+    # noisy-track experiments fall back to parameter-shift.
+    diff_method = "backprop" if noise_track == "A" else "parameter-shift"
 
     if name == "qc1":
         # Angle embedding + basic entangler (matches qssl/models/qc.py QC1).
-        @qml.qnode(dev, interface="torch")
+        @qml.qnode(dev, interface="torch", diff_method=diff_method)
         def circuit(inputs, weights):
             for i in range(n_qubits):
                 qml.RY(inputs[i], wires=i)
@@ -225,7 +229,7 @@ def make_quantum_head(name: str, n_qubits: int, n_layers: int, init_scale: float
     elif name == "qc2":
         # Same backbone as qc1 but pure inputs (no trainable weights) — use as a fixed
         # feature map; we add a thin trainable layer to keep gradient flow alive.
-        @qml.qnode(dev, interface="torch")
+        @qml.qnode(dev, interface="torch", diff_method=diff_method)
         def circuit(inputs, weights):
             for i in range(n_qubits):
                 qml.RY(inputs[i], wires=i)
@@ -239,7 +243,7 @@ def make_quantum_head(name: str, n_qubits: int, n_layers: int, init_scale: float
 
     elif name == "qc3":
         # Amplitude embedding + ring entangler.
-        @qml.qnode(dev, interface="torch")
+        @qml.qnode(dev, interface="torch", diff_method=diff_method)
         def circuit(inputs, weights):
             qml.AmplitudeEmbedding(features=inputs, wires=range(n_qubits), normalize=True, pad_with=0)
             for layer in range(weights.shape[0]):
@@ -252,7 +256,7 @@ def make_quantum_head(name: str, n_qubits: int, n_layers: int, init_scale: float
 
     elif name == "qc4":
         # Data re-uploading (Pérez-Salinas et al. 2020).
-        @qml.qnode(dev, interface="torch")
+        @qml.qnode(dev, interface="torch", diff_method=diff_method)
         def circuit(inputs, weights):
             for layer in range(weights.shape[0]):
                 # Re-upload data each layer scaled by trainable weights.
@@ -266,7 +270,7 @@ def make_quantum_head(name: str, n_qubits: int, n_layers: int, init_scale: float
 
     elif name == "qc6":
         # Hardware-efficient ansatz — Ry/Rz rotations with brick-wall CNOTs.
-        @qml.qnode(dev, interface="torch")
+        @qml.qnode(dev, interface="torch", diff_method=diff_method)
         def circuit(inputs, weights):
             for i in range(n_qubits):
                 qml.RY(inputs[i], wires=i)
