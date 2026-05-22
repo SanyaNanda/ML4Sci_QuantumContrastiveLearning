@@ -3,8 +3,8 @@
 import torch
 import torch.nn as nn
 from torch_geometric.nn import GCNConv
-from torch.nn import Linear, ReLU, Sigmoid, ModuleList, LeakyReLU, Linear, BatchNorm1d, BatchNorm
-from torch_geometric.nn import GATConv, global_mean_pool, global_max_pool
+from torch.nn import Linear, ReLU, Sigmoid, ModuleList, LeakyReLU, BatchNorm1d
+from torch_geometric.nn import GATConv, global_mean_pool, global_max_pool, BatchNorm
 from torch_geometric.utils import add_self_loops, degree
 from torch_geometric.data import Data, Dataset
 from torch.utils.data import Dataset
